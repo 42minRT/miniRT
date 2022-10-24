@@ -13,6 +13,10 @@ int	print_error(t_error err)
 		write(1, ele_msg, ft_strlen(ele_msg));
 	if (err == SYSTEM_ERROR)
 		write(1, sys_msg, ft_strlen(sys_msg));
+	// while (1)
+	// {
+	// 	;
+	// }
 	return (1);
 }
 
@@ -23,4 +27,8 @@ int	main(int argc, char **argv)
 	err = validate_file(argc, argv);
 	if (err != NO_ERROR)
 		return (print_error(err));
+	// while (1)
+	// {
+	// 	;
+	// }
 }
