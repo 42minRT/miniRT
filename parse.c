@@ -2,8 +2,22 @@
 
 t_error	validate_file(int argc, char **argv)
 {
+	int		fd;
+	char	*buf;
+
 	if (argc != 2 || is_rt_file(argv[1]) == FALSE)
 		return (ARG_ERROR);
+	fd = open(argv[1], O_RDONLY);
+	if (fd <= 0)
+		return (SYSTEM_ERROR);
+	while (1)
+	{
+		buf = get_next_line(fd);
+		if (buf == NULL)
+			break ;
+		write(1, buf, ft_strlen(buf));
+		free(buf);
+	}
 	return (NO_ERROR);
 }
 
