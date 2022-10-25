@@ -74,10 +74,10 @@ t_bool	validate_elements(char *line, t_list **file)
 	if (count_elements(elements) == 1 && ft_strncmp(elements[0], "\n", 1) == 0)
 		return (free_return(elements, TRUE));
 	if (count_elements(elements) < 3)
-		return (FALSE);
+		return (free_return(elements, FALSE));
 	type = elements[0];
 	if (is_valid_type(type) == FALSE)
-		return (FALSE);
+		return (free_return(elements, FALSE));
 	new = rt_lstnew(elements);
 	rt_lstadd_back(file, new);
 	return (free_return(elements, TRUE));
