@@ -1,11 +1,34 @@
-# include "parse.h"
+#include "parse.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = s;
+	while (n > 0)
+	{
+		*ptr++ = 0;
+		--n;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ary;
+
+	ary = malloc(count * size);
+	if (ary == 0)
+		return (0);
+	ft_bzero(ary, count * size);
+	return (ary);
+}
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
 	len = 0;
-	while (s[len])
+	while (s && s[len])
 		++len;
 	return (len);
 }

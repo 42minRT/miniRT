@@ -13,22 +13,27 @@ int	print_error(t_error err)
 		write(1, ele_msg, ft_strlen(ele_msg));
 	if (err == SYSTEM_ERROR)
 		write(1, sys_msg, ft_strlen(sys_msg));
-	// while (1)
-	// {
-	// 	;
-	// }
+	while (1)
+	{
+		;
+	}
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_error	err;
+	t_list	*file;
 
-	err = validate_file(argc, argv);
+	file = NULL;
+	err = validate_file(argc, argv, &file);
 	if (err != NO_ERROR)
 		return (print_error(err));
-	// while (1)
-	// {
-	// 	;
-	// }
+	// 출력용 임시 함수
+	write(1, "\n\n", 2);
+	rt_lstprint(file);
+	while (1)
+	{
+		;
+	}
 }

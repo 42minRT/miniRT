@@ -15,7 +15,7 @@ t_bool	is_rt_file(char *file_name)
 	return (match);
 }
 
-int	count_elements(char **elements)
+int		count_elements(char **elements)
 {
 	int	cnt;
 
@@ -42,7 +42,7 @@ t_bool	is_valid_type(char *type)
 	else
 		return (FALSE);
 	// tmp print
-	printf("%d %d %d\n", capital_type[0], capital_type[1], capital_type[2]);
+	// printf("%d %d %d\n", capital_type[0], capital_type[1], capital_type[2]);
 	if (capital_type[0] > 1 || capital_type[1] > 1 || capital_type[2] > 1)
 		return (FALSE);
 	return (TRUE);
@@ -63,24 +63,27 @@ t_bool	free_return(char **target, t_bool boolean)
 	return (boolean);
 }
 
-t_bool	validate_elements(char *line)
+t_bool	validate_elements(char *line, t_list **file)
 {
 	char	**elements;
 	char	*type;
-	t_bool	valid;
+	int		i;
+	t_list *new;
 
 	elements = ft_split(line, ' ');
 	if (count_elements(elements) == 1 && ft_strncmp(elements[0], "\n", 1) == 0)
 		return (free_return(elements, TRUE));
 	if (count_elements(elements) < 3)
-		return (free_return(elements, FALSE));
+		return (FALSE);
 	type = elements[0];
 	if (is_valid_type(type) == FALSE)
-		return (free_return(elements, FALSE));
+		return (FALSE);
+	new = rt_lstnew(elements);
+	rt_lstadd_back(file, new);
 	return (free_return(elements, TRUE));
 }
 
-t_error	validate_file(int argc, char **argv)
+t_error	validate_file(int argc, char **argv, t_list **file)
 {
 	int		fd;
 	char	*buf;
@@ -95,9 +98,9 @@ t_error	validate_file(int argc, char **argv)
 		buf = get_next_line(fd);
 		if (buf == NULL)
 			break ;
-		// tmp print
+		// 출력용 임시 함수
 		write(1, buf, ft_strlen(buf));
-		if (validate_elements(buf) == FALSE)
+		if (validate_elements(buf, file) == FALSE)
 			return (ELEMENTS_ERROR);
 		free(buf);
 	}
