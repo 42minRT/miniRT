@@ -55,7 +55,7 @@ debug:
 	make bonus -C $(LIBFT)
 	cp $(LIBFT)/$(LIBFT_LIB) ./
 	$(CC) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
-	$(DEBUGGER) ./solong
+	$(DEBUGGER) ./minirt
 
 %.o: %.c
 	$(CC) ${CFLAGS} -c $< -o $@
