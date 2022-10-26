@@ -1,4 +1,5 @@
 #include "../../include/print.h"
+#include <unistd.h>
 
 int	print_error(t_error err)
 {
@@ -6,16 +7,16 @@ int	print_error(t_error err)
 	const char	*ele_msg = "wrong elements in file.\n";
 	const char	*sys_msg = "file open fail.\n";
 
-	write(1, "Error\n", 6);
+	write(STDOUT_FILENO, "Error\n", 6);
 	if (err == ARG_ERROR)
-		write(1, arg_msg, ft_strlen(arg_msg));
+		write(STDOUT_FILENO, arg_msg, ft_strlen(arg_msg));
 	if (err == ELEMENTS_ERROR)
-		write(1, ele_msg, ft_strlen(ele_msg));
+		write(STDOUT_FILENO, ele_msg, ft_strlen(ele_msg));
 	if (err == SYSTEM_ERROR)
-		write(1, sys_msg, ft_strlen(sys_msg));
-	while (1)
+		write(STDOUT_FILENO, sys_msg, ft_strlen(sys_msg));
+	while (TRUE)
 	{
 		;
 	}
-	return (1);
+	return (ERROR);
 }

@@ -1,3 +1,4 @@
+/*
 #include "../mlx/mlx.h"
 
 int main()
@@ -10,3 +11,4 @@ int main()
 	mlx_loop(mlx_ptr); // loop를 돌면서 event를 기다리고, 생성한 윈도우를 Rendering한다.
 	return (0);
 }
+*/

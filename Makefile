@@ -9,18 +9,12 @@ DFLAGS = -g3
 MLX = mlx
 MLX_A = libmlx.a
 
-SL_SRCS_DIR = src/
-SL_SRCS = mlx_test.c
-SL_PATHS = $(addprefix $(SL_SRCS_DIR), $(SL_SRCS))
-SL_OBJS = ${SL_PATHS:.c=.o}
+SL_SRCS = $(wildcard src/*.c) $(wildcard src/**/*.c) $(wildcard src/**/**/*.c)
+SL_OBJS = ${SL_SRCS:.c=.o}
 
-GNL_DIR = get_next_line/
-GNL_SRCS = get_next_line.c get_next_line_utils.c
-GNL_PATHS = $(addprefix $(GNL_DIR), $(GNL_SRCS))
-GNL_OBJS = ${GNL_PATHS:.c=.o}
+OBJS = $(SL_OBJS)
 
 detected_OS := $(shell uname)
-OBJS = $(SL_OBJS) $(GNL_OBJS)
 
 ifeq ($(detected_OS), Linux)
 DEBUGGER = gdb

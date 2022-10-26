@@ -1,13 +1,5 @@
-#include <stdio.h>
+#include "../../include/write_color.h"
 
-typedef struct s_color t_color;
-
-struct s_color
-{
-    double r;
-    double g;
-    double b;
-};
 
 t_color set_color_rgb(double r, double g, double b)
 {
@@ -44,11 +36,11 @@ t_color black(void)
     return (set_color_rgb(0, 0, 0));
 }
 
-void    write_color(t_color pixel_color)
+void    write_color(t_color3 pixel_color)
 {
-    printf("%d %d %d\n", (int)(pixel_color.r),
-                         (int)(pixel_color.g),
-                         (int)(pixel_color.b)
+    printf("%d %d %d\n", (int)(pixel_color.x),
+                         (int)(pixel_color.y),
+                         (int)(pixel_color.z)
     );
 }
 

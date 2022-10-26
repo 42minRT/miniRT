@@ -1,5 +1,5 @@
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef VECTOR_UTILS_H
+# define VECTOR_UTILS_H
 
 # include <math.h>
 # include <stdlib.h>
@@ -8,7 +8,7 @@
 
 t_vec3      vec3(double x, double y, double z);
 t_point3    point3(double x, double y, double z);
-t_point3    color3(double r, double g, double b);
+t_color3    color3(double r, double g, double b);
 void        vset(t_vec3 *vec, double x, double y, double z);
 double      vlength2(t_vec3 vec);
 double      vlength(t_vec3 vec);

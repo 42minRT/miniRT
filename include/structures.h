@@ -5,26 +5,31 @@
 
 typedef struct s_rt_list	t_rt_list;
 
+// error number
 typedef enum e_error
 {
 	NO_ERROR = 0,
+	ERROR = 1,
 	ARG_ERROR = 100,
 	ELEMENTS_ERROR = 101,
 	SYSTEM_ERROR = 102
 }	t_error;
 
+//boolean 값
 typedef enum e_bool
 {
 	FALSE,
 	TRUE
 }	t_bool;
 
+// is 함수의 return 값을 yes, no 로 받으세요
 typedef enum e_is_return
 {
 	NO,
 	YES
 }	t_is_return;
 
+// t_list 였던 것. 겹쳐서 t_rt_list 로 변경.
 struct s_rt_list
 {
 	char	*type;
@@ -32,9 +37,15 @@ struct s_rt_list
 	t_rt_list	*next;
 };
 
+//	object_type 정리함. EPSILON 은 int 가 아니라 뺌
+typedef enum e_object_type
+{
+	SP = 0,
+	LIGHT_POINT,
+	LUMEN
+}	t_object_type;
 
-typedef int	t_object_type;
-# define SP 0
+# define EPSILON 1e-6
 
 typedef struct s_vec3	t_vec3;
 typedef struct s_vec3	t_point3;
@@ -45,6 +56,10 @@ typedef struct s_canvas	t_canvas;
 typedef	struct s_sphere	t_sphere;
 typedef struct s_hit_record	t_hit_record;
 typedef struct s_object	t_object;
+typedef struct s_scene	t_scene;
+typedef struct s_light	t_light;
+typedef struct s_color	t_color;
+
 
 struct s_vec3
 {
@@ -55,13 +70,13 @@ struct s_vec3
 
 struct s_ray
 {
-	t_point3	orig;
+	t_point3	origin;
 	t_vec3		dir;
 };
 
 struct s_camera
 {
-	t_point3	orig;
+	t_point3	origin;
 	double		viewport_h;
 	double		viewport_w;
 	t_vec3		horizontal;
@@ -84,6 +99,20 @@ struct	s_sphere
 	double		radius2;
 };
 
+struct s_color3
+{
+	double x;
+	double y;
+	double z;
+};
+
+struct s_color
+{
+	double r;
+	double g;
+	double b;
+};
+
 struct	s_hit_record
 {
 	t_point3	p;
@@ -92,6 +121,7 @@ struct	s_hit_record
 	double		tmax;
 	double		t;
 	t_bool		front_face;
+	t_color3	albedo;
 };
 
 struct	s_object
@@ -99,6 +129,26 @@ struct	s_object
 	t_object_type	type;
 	void			*element;
 	void			*next;
+	t_color3		albedo;
 };
+
+struct s_light
+{
+    t_point3    origin;
+    t_color3    light_color;
+    double      bright_ratio;
+};
+
+struct s_scene
+{
+    t_canvas        canvas;
+    t_camera        camera;
+    t_object        *world;
+    t_object        *light;
+    t_color3        ambient;
+    t_ray           ray;
+    t_hit_record    rec;
+};
+
 
 #endif
