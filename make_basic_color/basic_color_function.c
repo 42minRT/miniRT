@@ -52,19 +52,20 @@ void    write_color(t_color pixel_color)
     );
 }
 
-int main(int argc, char **argv)
-{
-    int     canvas_width;
-    int     canvas_height;
+// 테스트 용 main 문
+// int main(int argc, char **argv)
+// {
+//     int     canvas_width;
+//     int     canvas_height;
 
-    canvas_width = 3;
-    canvas_height = 2;
-    printf("P3\n%d %d\n255\n", canvas_width, canvas_height);
-    write_color(red());
-    write_color(green());
-    write_color(blue());
-    write_color(white());
-    write_color(black());   
-    write_color(blue());
-    return (0);
-}
+//     canvas_width = 3;
+//     canvas_height = 2;
+//     printf("P3\n%d %d\n255\n", canvas_width, canvas_height);
+//     write_color(red());
+//     write_color(green());
+//     write_color(blue());
+//     write_color(white());
+//     write_color(black());   
+//     write_color(blue());
+//     return (0);
+// }
