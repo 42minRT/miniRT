@@ -45,6 +45,9 @@
 *.su
 *.idb
 *.pdb
+cmake-build-debug
+CmakeLists.txt
+.idea/
 
 # Kernel Module Compile Results
 *.mod*
