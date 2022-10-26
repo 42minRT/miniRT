@@ -3,57 +3,36 @@
 #include "../include/structures.h"
 #include "../include/vector_utils.h"
 #include "../include/object_utils.h"
-#include "../include/write_color.h"
+#include "../include/color.h"
 #include "../include/scene.h"
 #include "../include/trace.h"
+#include "../include/draw.h"
+#include "../mlx/mlx.h"
 
-int	main(void)
-{
-    int			i;
-    int			j;
-    double      u;
-    double      v;
-	t_color3	pixel_color;
-    t_object    *world;
-    t_scene     *scene;
-
-    scene = scene_init();
-    // 랜더링
-    // P3 는 색상값이 아스키코드라는 뜻, 그리고 다음 줄은 캔버스의 가로, 세로 픽셀 수, 마지막은 사용할 색상값
-    printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
-    j = scene->canvas.height - 1;
-    while (j >= 0)
-    {
-        i = 0;
-        while (i < scene->canvas.width)
-        {
-            u = (double)i / (scene->canvas.width - 1);
-            v = (double)j / (scene->canvas.height - 1);
-            scene->ray = ray_primary(&scene->camera, u, v);
-            pixel_color = ray_color(scene);
-			write_color(pixel_color);
-            ++i;
-        }
-    --j;
-    }
-    return (0);
-}
-/*
 int	main(int argc, char **argv)
 {
-	t_error	err;
+    t_object    *world;
+    t_scene     *scene;
 	t_rt_list	*file;
+	t_error		err;
+	
+	void	*mlx_ptr;
+	void	*win_ptr; // 생성할 윈도우를 가리키는 포인터
+	t_data		img;
 
-	file = NULL;
 	err = validate_file(argc, argv, &file);
 	if (err != NO_ERROR)
-		return (print_error(err));
-	// 출력용 임시 함수
-	write(1, "\n\n", 2);
-	rt_lstprint(file);
-	while (1)
-	{
-		;
-	}
+		return (err);
+	//file 을 이제 이케이케 잘 해야 한다
+
+    scene = scene_init(); 	// scene/scene_init 에 있음
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, scene->canvas.width, scene->canvas.height, "Hellow World!");
+	img.img = mlx_new_image(mlx_ptr, scene->canvas.width, scene->canvas.height);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	draw_image(scene, &img); // 이미지를 그리자?
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
+	mlx_loop(mlx_ptr); // loop를 돌면서 event를 기다리고, 생성한 윈도우를 Rendering한다.
+    return (0);
 }
-*/

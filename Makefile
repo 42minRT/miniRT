@@ -17,10 +17,8 @@ OBJS = $(SL_OBJS)
 detected_OS := $(shell uname)
 
 ifeq ($(detected_OS), Linux)
-DEBUGGER = gdb
 MLX_LIB = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 else ifeq ($(detected_OS), Darwin)
-DEBUGGER = lldb
 MLX_LIB = -lm -Lmlx -lmlx -framework OpenGL -framework AppKit
 endif
 
@@ -45,13 +43,7 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-debug:
-	make bonus -C $(LIBFT)
-	cp $(LIBFT)/$(LIBFT_LIB) ./
-	$(CC) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
-	$(DEBUGGER) ./minirt
-
 %.o: %.c
-	$(CC) ${CFLAGS} -c $< -o $@
+	$(CC) ${CFLAGS} ${DFLAGS} -c $< -o $@
 
 .PHONY : all clean fclean

@@ -3,7 +3,6 @@
 
 # include "libft.h"
 
-typedef struct s_rt_list	t_rt_list;
 
 // error number
 typedef enum e_error
@@ -29,14 +28,6 @@ typedef enum e_is_return
 	YES
 }	t_is_return;
 
-// t_list 였던 것. 겹쳐서 t_rt_list 로 변경.
-struct s_rt_list
-{
-	char	*type;
-	char	**elements;
-	t_rt_list	*next;
-};
-
 //	object_type 정리함. EPSILON 은 int 가 아니라 뺌
 typedef enum e_object_type
 {
@@ -46,6 +37,25 @@ typedef enum e_object_type
 }	t_object_type;
 
 # define EPSILON 1e-6
+
+// t_list 였던 것. 겹쳐서 t_rt_list 로 변경.
+typedef struct s_rt_list	t_rt_list;
+struct s_rt_list
+{
+	char	*type;
+	char	**elements;
+	t_rt_list	*next;
+};
+
+// mlx img
+typedef struct s_data	t_data;
+struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+};
 
 typedef struct s_vec3	t_vec3;
 typedef struct s_vec3	t_point3;
