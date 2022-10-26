@@ -1,4 +1,4 @@
-#include "parse.h"
+#include "../../include/parse.h"
 
 size_t	ft_arrlen(char **array)
 {

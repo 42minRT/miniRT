@@ -1,4 +1,4 @@
-#include "parse.h"
+#include "../../include/parse.h"
 
 t_bool	is_rt_file(char *file_name)
 {

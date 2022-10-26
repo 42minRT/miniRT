@@ -1,4 +1,4 @@
-#include "parse.h"
+#include "../include/parse.h"
 
 void	ft_bzero(void *s, size_t n)
 {

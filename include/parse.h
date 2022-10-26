@@ -5,7 +5,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "get_next_line/get_next_line.h"
+# include "../get_next_line/get_next_line.h"
 
 typedef int	t_error;
 # define NO_ERROR 0

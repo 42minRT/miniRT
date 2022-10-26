@@ -1,4 +1,4 @@
-#include "parse.h"
+#include "../include/parse.h"
 
 int	print_error(t_error err)
 {
