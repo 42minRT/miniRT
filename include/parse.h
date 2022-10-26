@@ -5,36 +5,19 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../get_next_line/get_next_line.h"
+# include "get_next_line.h"
+# include "structures.h"
 
-typedef int	t_error;
-# define NO_ERROR 0
-# define ARG_ERROR 100
-# define ELEMENTS_ERROR 101
-# define SYSTEM_ERROR 102
-
-typedef int	t_bool;
-# define FALSE 0
-# define TRUE 1
-
-typedef struct s_list	t_list;
-
-struct s_list
-{
-	char	*type;
-	char	**elements;
-	t_list	*next;
-};
 
 // parse
-t_error	validate_file(int argc, char **argv, t_list **file);
+t_error	validate_file(int argc, char **argv, t_rt_list **file);
 
 // rt list
-size_t	ft_arrlen(char **array);
-t_list	*rt_lstnew(char **content);
-void	rt_lstadd_back(t_list **lst, t_list *new);
+size_t		ft_arrlen(char **array);
+t_rt_list	*rt_lstnew(char **content);
+void		rt_lstadd_back(t_rt_list **lst, t_rt_list *new_lst);
 // 출력용 임시 함수
-void	rt_lstprint(t_list *lst);
+void		rt_lstprint(t_rt_list *lst);
 
 // tmp libft
 void	*ft_calloc(size_t count, size_t size);

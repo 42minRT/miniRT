@@ -63,7 +63,7 @@ t_bool	free_return(char **target, t_bool boolean)
 	return (boolean);
 }
 
-t_bool	validate_elements(char *line, t_list **file)
+t_bool	validate_elements(char *line, t_rt_list **file)
 {
 	char	**elements;
 	char	*type;
@@ -83,7 +83,7 @@ t_bool	validate_elements(char *line, t_list **file)
 	return (free_return(elements, TRUE));
 }
 
-t_error	validate_file(int argc, char **argv, t_list **file)
+t_error	validate_file(int argc, char **argv, t_rt_list **file)
 {
 	int		fd;
 	char	*buf;
