@@ -1,4 +1,4 @@
-#include "../../include/get_next_line.h"
+#include "../../include/parse.h"
 
 t_buffer	*ft_bring_buffer(t_buffer *head, int fd)
 {

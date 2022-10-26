@@ -1,4 +1,4 @@
-#include "../../include/get_next_line.h"
+#include "../../include/parse.h"
 
 int	init_string(t_string *t_str)
 {

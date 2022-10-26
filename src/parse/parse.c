@@ -68,7 +68,7 @@ t_bool	validate_elements(char *line, t_rt_list **file)
 	char	**elements;
 	char	*type;
 	int		i;
-	t_list *new;
+	t_rt_list *new;
 
 	elements = ft_split(line, ' ');
 	if (count_elements(elements) == 1 && ft_strncmp(elements[0], "\n", 1) == 0)
