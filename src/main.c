@@ -16,10 +16,11 @@ int	main(int argc, char **argv)
 	t_rt_list	*file;
 	t_error		err;
 	
-	void	*mlx_ptr;
-	void	*win_ptr; // 생성할 윈도우를 가리키는 포인터
+	void		*mlx_ptr;
+	void		*win_ptr; // 생성할 윈도우를 가리키는 포인터
 	t_data		img;
 
+	file = malloc(sizeof(t_rt_list));
 	err = validate_file(argc, argv, &file);
 	if (err != NO_ERROR)
 		return (print_error(err));
