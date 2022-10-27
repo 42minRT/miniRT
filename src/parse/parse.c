@@ -27,6 +27,7 @@ int		count_elements(char **elements)
 
 t_is_return	is_valid_type(char *type)
 {
+	// why static?
 	static int	capital_type[3];
 
 	if (ft_strncmp(type, "sp", 3) == 0
@@ -41,8 +42,6 @@ t_is_return	is_valid_type(char *type)
 		++(capital_type[2]);
 	else
 		return (NO);
-	// tmp print
-	// printf("%d %d %d\n", capital_type[0], capital_type[1], capital_type[2]);
 	if (capital_type[0] > 1 || capital_type[1] > 1 || capital_type[2] > 1)
 		return (NO);
 	return (YES);
@@ -98,7 +97,6 @@ t_error	validate_file(int argc, char **argv, t_rt_list **file)
 		buf = get_next_line(fd);
 		if (buf == NULL)
 			break ;
-		// 출력용 임시 함수
 		write(1, buf, ft_strlen(buf));
 		if (validate_elements(buf, file) == FALSE)
 			return (ELEMENTS_ERROR);
