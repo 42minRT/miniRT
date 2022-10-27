@@ -38,6 +38,19 @@ int			ft_str_append(t_string *t_str, char c);
 
 // parse
 t_error	validate_file(int argc, char **argv, t_rt_list **file);
+double	ft_atod(char *str);
+
+//validate_utils
+int				count_elements(char **elements);
+t_is_return		is_rt_file(char *file);
+t_is_return		is_valid_type(char *type);
+t_bool			free_return(char **target, t_bool boolean);
+t_bool			validate_elements(char *line, t_rt_list **file);
+
+
+
+
+
 
 // rt list
 size_t		ft_arrlen(char **array);
