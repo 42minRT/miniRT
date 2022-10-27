@@ -6,6 +6,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "structures.h"
+# include "libft.h"
 
 # define BUFFER_SIZE 42
 
@@ -54,7 +55,7 @@ t_bool			validate_elements(char *line, t_rt_list **file);
 
 // rt list
 size_t		ft_arrlen(char **array);
-t_rt_list	*rt_lstnew(char **content);
+t_rt_list	*new_rt_lst(char **content);
 void		rt_lstadd_back(t_rt_list **lst, t_rt_list *new_lst);
 // 출력용 임시 함수
 void		rt_lstprint(t_rt_list *lst);

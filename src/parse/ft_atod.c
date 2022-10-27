@@ -1,6 +1,5 @@
-#include <stddef.h>
 
-int	ft_isdigit(int c);
+#include "../../include/libft.h"
 
 static int	ft_isspace(const char str)
 {
