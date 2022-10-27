@@ -45,6 +45,7 @@ double	ft_atod(char *str);
 int				count_elements(char **elements);
 t_is_return		is_rt_file(char *file);
 t_is_return		is_valid_type(char *type);
+t_is_return 	is_between(double conditional_num1, double conditional_num2, double num);
 t_bool			free_return(char **target, t_bool boolean);
 t_bool			validate_elements(char *line, t_rt_list **file);
 

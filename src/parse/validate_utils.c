@@ -45,6 +45,26 @@ t_is_return	is_valid_double_format(char *to_double_str)
 	return (YES);
 }
 
+t_is_return is_between(double conditional_num1, double conditional_num2, double num)
+{
+	double	min;
+	double	max;
+
+	if (conditional_num1 < conditional_num2)
+	{
+		min = conditional_num1;
+		max = conditional_num2;
+	}
+	else
+	{
+		min = conditional_num2;
+		max = conditional_num1;
+	}
+	if (min < num && max > num)
+		return (YES);
+	return (NO);
+}
+
 t_is_return	is_valid_type(char *type)
 {
 	static int	capital_type[3];
