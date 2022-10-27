@@ -27,11 +27,11 @@ char	**new_elements_without_type(char **content)
 	return (new);
 }
 
-t_list	*rt_lstnew(char **content)
+t_rt_list	*rt_lstnew(char **content)
 {
-	t_list	*new;
+	t_rt_list	*new;
 
-	new = malloc(sizeof(t_list));
+	new = malloc(sizeof(t_rt_list));
 	if (new == NULL)
 		return (NULL);
 	new->type = ft_strdup(content[0]);
@@ -40,9 +40,9 @@ t_list	*rt_lstnew(char **content)
 	return (new);
 }
 
-void	rt_lstadd_back(t_list **lst, t_list *new)
+void	rt_lstadd_back(t_rt_list **lst, t_rt_list *new)
 {
-	t_list	*cur;
+	t_rt_list	*cur;
 
 	if (*lst == 0)
 	{
@@ -56,7 +56,7 @@ void	rt_lstadd_back(t_list **lst, t_list *new)
 }
 
 // 출력용 임시 함수
-void	rt_lstprint(t_list *lst)
+void	rt_lstprint(t_rt_list *lst)
 {
 	int	i;
 

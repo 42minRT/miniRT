@@ -5,43 +5,45 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../get_next_line/get_next_line.h"
+# include "structures.h"
 
-typedef int	t_error;
-# define NO_ERROR 0
-# define ARG_ERROR 100
-# define ELEMENTS_ERROR 101
-# define SYSTEM_ERROR 102
+# define BUFFER_SIZE 42
 
-typedef int	t_bool;
-# define FALSE 0
-# define TRUE 1
-
-typedef struct s_list	t_list;
-
-struct s_list
+typedef struct s_string
 {
-	char	*type;
-	char	**elements;
-	t_list	*next;
-};
+	char	*line;
+	size_t	len;
+	size_t	size;
+}	t_string;
+
+typedef struct s_buffer
+{
+	int				fd;
+	char			*buf;
+	char			*cur;
+	char			*end;
+	struct s_buffer	*next;
+}	t_buffer;
+
+//gnl 함수
+char		*get_next_line(int fd);
+int			ft_get_line(int fd, t_string *t_str, t_buffer *head);
+char		ft_get_char(int fd, t_buffer *t_buf, int *eof);
+t_buffer	*ft_bring_buffer(t_buffer *buf_head, int fd);
+int			init_string(t_string *t_str);
+t_buffer	*init_buffer(int fd);
+void		ft_free_buf(t_buffer *buf, int fd);
+char		*ft_copy_string(char *dst, t_string *t_str);
+int			ft_str_append(t_string *t_str, char c);
 
 // parse
-t_error	validate_file(int argc, char **argv, t_list **file);
+t_error	validate_file(int argc, char **argv, t_rt_list **file);
 
 // rt list
-size_t	ft_arrlen(char **array);
-t_list	*rt_lstnew(char **content);
-void	rt_lstadd_back(t_list **lst, t_list *new);
+size_t		ft_arrlen(char **array);
+t_rt_list	*rt_lstnew(char **content);
+void		rt_lstadd_back(t_rt_list **lst, t_rt_list *new_lst);
 // 출력용 임시 함수
-void	rt_lstprint(t_list *lst);
-
-// tmp libft
-void	*ft_calloc(size_t count, size_t size);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	**ft_split(char const *s, char c);
+void		rt_lstprint(t_rt_list *lst);
 
 #endif

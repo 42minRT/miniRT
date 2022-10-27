@@ -1,16 +1,16 @@
 #include "../../include/parse.h"
 
-t_bool	is_rt_file(char *file_name)
+t_is_return	is_rt_file(char *file_name)
 {
 	int		len;
 	char	*file_ext;
-	t_bool	match;
+	t_is_return	match;
 
-	match = FALSE;
+	match = NO;
 	len = ft_strlen(file_name);
 	file_ext = ft_substr(file_name, len - 3, 3);
 	if (ft_strncmp(file_ext, ".rt", 3) == 0)
-		match = TRUE;
+		match = YES;
 	free(file_ext);
 	return (match);
 }
@@ -25,14 +25,14 @@ int		count_elements(char **elements)
 	return (cnt);
 }
 
-t_bool	is_valid_type(char *type)
+t_is_return	is_valid_type(char *type)
 {
 	static int	capital_type[3];
 
 	if (ft_strncmp(type, "sp", 3) == 0
 		|| ft_strncmp(type, "pl", 3) == 0
 		|| ft_strncmp(type, "cy", 3) == 0)
-		return (TRUE);
+		return (YES);
 	if (ft_strncmp(type, "A", 2) == 0)
 		++(capital_type[0]);
 	else if (ft_strncmp(type, "C", 2) == 0)
@@ -40,12 +40,12 @@ t_bool	is_valid_type(char *type)
 	else if (ft_strncmp(type, "L", 2) == 0)
 		++(capital_type[2]);
 	else
-		return (FALSE);
+		return (NO);
 	// tmp print
 	// printf("%d %d %d\n", capital_type[0], capital_type[1], capital_type[2]);
 	if (capital_type[0] > 1 || capital_type[1] > 1 || capital_type[2] > 1)
-		return (FALSE);
-	return (TRUE);
+		return (NO);
+	return (YES);
 }
 
 t_bool	free_return(char **target, t_bool boolean)
@@ -63,12 +63,12 @@ t_bool	free_return(char **target, t_bool boolean)
 	return (boolean);
 }
 
-t_bool	validate_elements(char *line, t_list **file)
+t_bool	validate_elements(char *line, t_rt_list **file)
 {
 	char	**elements;
 	char	*type;
 	int		i;
-	t_list *new;
+	t_rt_list *new;
 
 	elements = ft_split(line, ' ');
 	if (count_elements(elements) == 1 && ft_strncmp(elements[0], "\n", 1) == 0)
@@ -76,19 +76,19 @@ t_bool	validate_elements(char *line, t_list **file)
 	if (count_elements(elements) < 3)
 		return (free_return(elements, FALSE));
 	type = elements[0];
-	if (is_valid_type(type) == FALSE)
+	if (is_valid_type(type) == NO)
 		return (free_return(elements, FALSE));
 	new = rt_lstnew(elements);
 	rt_lstadd_back(file, new);
 	return (free_return(elements, TRUE));
 }
 
-t_error	validate_file(int argc, char **argv, t_list **file)
+t_error	validate_file(int argc, char **argv, t_rt_list **file)
 {
 	int		fd;
 	char	*buf;
 
-	if (argc != 2 || is_rt_file(argv[1]) == FALSE)
+	if (argc != 2 || is_rt_file(argv[1]) == NO)
 		return (ARG_ERROR);
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)

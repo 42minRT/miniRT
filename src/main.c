@@ -1,39 +1,38 @@
 #include "../include/parse.h"
-
-int	print_error(t_error err)
-{
-	const char	*arg_msg = "wrong file.\n";
-	const char	*ele_msg = "wrong elements in file.\n";
-	const char	*sys_msg = "file open fail.\n";
-
-	write(1, "Error\n", 6);
-	if (err == ARG_ERROR)
-		write(1, arg_msg, ft_strlen(arg_msg));
-	if (err == ELEMENTS_ERROR)
-		write(1, ele_msg, ft_strlen(ele_msg));
-	if (err == SYSTEM_ERROR)
-		write(1, sys_msg, ft_strlen(sys_msg));
-	while (1)
-	{
-		;
-	}
-	return (1);
-}
+#include "../include/print.h"
+#include "../include/structures.h"
+#include "../include/vector_utils.h"
+#include "../include/object_utils.h"
+#include "../include/color.h"
+#include "../include/scene.h"
+#include "../include/trace.h"
+#include "../include/draw.h"
+#include "../mlx/mlx.h"
 
 int	main(int argc, char **argv)
 {
-	t_error	err;
-	t_list	*file;
+    t_object    *world;
+    t_scene     *scene;
+	t_rt_list	*file;
+	t_error		err;
+	
+	void	*mlx_ptr;
+	void	*win_ptr; // 생성할 윈도우를 가리키는 포인터
+	t_data		img;
 
-	file = NULL;
 	err = validate_file(argc, argv, &file);
 	if (err != NO_ERROR)
 		return (print_error(err));
-	// 출력용 임시 함수
-	write(1, "\n\n", 2);
-	rt_lstprint(file);
-	while (1)
-	{
-		;
-	}
+	//file 을 이제 이케이케 잘 해야 한다
+
+    scene = scene_init(); 	// scene/scene_init 에 있음
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, scene->canvas.width, scene->canvas.height, "Hellow World!");
+	img.img = mlx_new_image(mlx_ptr, scene->canvas.width, scene->canvas.height);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	draw_image(scene, &img); // 이미지를 그리자?
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
+	mlx_loop(mlx_ptr); // loop를 돌면서 event를 기다리고, 생성한 윈도우를 Rendering한다.
+    return (0);
 }
