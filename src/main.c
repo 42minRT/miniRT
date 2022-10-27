@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 
 	err = validate_file(argc, argv, &file);
 	if (err != NO_ERROR)
-		return (err);
+		return (print_error(err));
 	//file 을 이제 이케이케 잘 해야 한다
 
     scene = scene_init(); 	// scene/scene_init 에 있음
