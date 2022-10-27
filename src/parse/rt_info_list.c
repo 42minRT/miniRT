@@ -27,7 +27,7 @@ char	**new_elements_without_type(char **content)
 	return (new);
 }
 
-t_rt_list	*rt_lstnew(char **content)
+t_rt_list	*new_rt_lst(char **content)
 {
 	t_rt_list	*new;
 
@@ -50,7 +50,7 @@ void	rt_lstadd_back(t_rt_list **lst, t_rt_list *new)
 		return ;
 	}
 	cur = *lst;
-	while (cur->next)
+	while (cur->next != NULL)
 		cur = cur->next;
 	cur->next = new;
 }
