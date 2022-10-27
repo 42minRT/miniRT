@@ -20,7 +20,7 @@ void    draw_pixel(t_data *img, t_color3 pixel_color, int i, int j)
 
 	int trgb;
 
-	trgb = create_trgb((255),
+	trgb = create_trgb((0),
 				(int)(255.999 * pixel_color.x),
                 (int)(255.999 * pixel_color.y),
                 (int)(255.999 * pixel_color.z));
@@ -39,13 +39,13 @@ void	draw_image(t_scene *scene, t_data *img)
     while (j >= 0)
     {
         i = 0;
-        while (i < scene->canvas.width)
+        while (i < scene->canvas.width - 1)
         {
             u = (double)i / (scene->canvas.width - 1);
             v = (double)j / (scene->canvas.height - 1);
             scene->ray = ray_primary(&scene->camera, u, v);
             pixel_color = ray_color(scene);
-			draw_pixel(img, pixel_color, i, j);
+			draw_pixel(img, pixel_color, i, scene->canvas.height - j);
             ++i;
         }
     --j;
