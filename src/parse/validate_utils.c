@@ -47,7 +47,6 @@ t_is_return	is_valid_double_format(char *to_double_str)
 
 t_is_return	is_valid_type(char *type)
 {
-	// why static?
 	static int	capital_type[3];
 
 	if (ft_strncmp(type, "sp", 3) == 0
