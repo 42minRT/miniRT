@@ -5,6 +5,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 # include "structures.h"
 # include "libft.h"
 
