@@ -80,25 +80,23 @@ t_is_return	is_rgb_element(char *str)
 t_is_return	is_rgb(char *str)
 {
 	int		i;
+	int		rgb_elements_len;
 	int		ret;
 	char	**rgb_elements;
 
 	i = 0;
 	ret = YES;
 	rgb_elements = ft_split(str, ',');
-	while (i < 3)
+	rgb_elements_len = count_elements(rgb_elements);
+	if (rgb_elements_len != 3)
+		return (free_return(rgb_elements, NO));
+	while (i < rgb_elements_len)
 	{
 		if (is_rgb_element(rgb_elements[i]) == NO)
 			ret = NO;
 		++i;
 	}
-	i = 0;
-	while (i < 3)
-	{
-		free(rgb_elements[i]);
-		++i;
-	}
-	free(rgb_elements);
+	free_return(rgb_elements, TRUE);
 	return (ret);
 }
 
@@ -135,6 +133,11 @@ t_is_return	is_valid_a_element(char **elements)
 	return (YES);
 }
 
+t_is_return	is_valid_c_element(char **elements)
+{
+	
+}
+
 t_is_return	is_valid_elements(char **elements)
 {
 	char		*type;
@@ -144,7 +147,17 @@ t_is_return	is_valid_elements(char **elements)
 	ret = YES;
 	if (ft_strncmp(type, "A", 2) == 0)
 		ret = is_valid_a_element(elements);
-	return (YES);
+	else if (ft_strncmp(type, "C", 2) == 0)
+		ret = is_valid_c_element(elements);
+	else if (ft_strncmp(type, "L", 2) == 0)
+		ret = is_valid_l_element(elements);
+	else if (ft_strncmp(type, "sp", 3) == 0)
+		ret = is_valid_sp_element(elements);
+	else if (ft_strncmp(type, "pl", 3) == 0)
+		ret = is_valid_sp_element(elements);
+	else if (ft_strncmp(type, "cy", 3) == 0)
+		ret = is_valid_sp_element(elements);
+	return (ret);
 }
 
 t_bool	free_return(char **target, t_bool boolean)
