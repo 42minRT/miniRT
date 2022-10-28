@@ -60,7 +60,7 @@ t_is_return is_between(double conditional_num1, double conditional_num2, double 
 		min = conditional_num2;
 		max = conditional_num1;
 	}
-	if (min < num && max > num)
+	if (min <= num && max >= num)
 		return (YES);
 	return (NO);
 }
