@@ -32,14 +32,17 @@ t_is_return	is_valid_double_format(char *to_double_str)
 
 	i = 0;
 	dot_cnt = 0;
-	while (to_double_str[i] != FALSE)
+	while (to_double_str[i] != NULL)
 	{
 		if (dot_cnt > 1)
 			return (NO);
-		if (ft_isdigit(to_double_str[i]) == FALSE)
-			return (NO);
 		if (to_double_str[i] == '.')
+		{
 			++dot_cnt;
+			++i;
+		}
+		if (ft_isdigit(to_double_str[i]) == FALSE || dot_cnt > 1)
+			return (NO);
 		++i;
 	}
 	return (YES);
@@ -65,7 +68,7 @@ t_is_return is_between(double conditional_num1, double conditional_num2, double 
 	return (NO);
 }
 
-t_is_return	is_rgb(char *str)
+t_is_return	is_rgb_element(char *str)
 {
 	if (is_valid_double_format(str) == NO)
 		return (NO);
@@ -74,6 +77,32 @@ t_is_return	is_rgb(char *str)
 	return (NO);
 }
 
+t_is_return	is_rgb(char *str)
+{
+	int		i;
+	int		ret;
+	char	**rgb_elements;
+
+	i = 0;
+	ret = YES;
+	rgb_elements = ft_split(str, ',');
+	while (i < 3)
+	{
+		if (is_rgb_element(rgb_elements[i]) == NO)
+			ret = NO;
+		++i;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		free(rgb_elements[i]);
+		++i;
+	}
+	free(rgb_elements);
+	return (ret);
+}
+
+// TODO: 타입 반환하는 함수 필요
 t_is_return	is_valid_type(char *type)
 {
 	static int	capital_type[3];
@@ -92,6 +121,29 @@ t_is_return	is_valid_type(char *type)
 		return (NO);
 	if (capital_type[0] > 1 || capital_type[1] > 1 || capital_type[2] > 1)
 		return (NO);
+	return (YES);
+}
+
+t_is_return	is_valid_a_element(char **elements)
+{
+	if (is_valid_double_format(elements[1]) == NO)
+		return (NO);
+	if (is_between(0.0, 1.0, ft_atod(elements[1])) == NO)
+		return (NO);
+	if (is_rgb(elements[2]) == NO)
+		return (NO);
+	return (YES);
+}
+
+t_is_return	is_valid_elements(char **elements)
+{
+	char		*type;
+	t_is_return	ret;
+
+	type = elements[0];
+	ret = YES;
+	if (ft_strncmp(type, "A", 2) == 0)
+		ret = is_valid_a_element(elements);
 	return (YES);
 }
 
@@ -124,6 +176,9 @@ t_bool	validate_elements(char *line, t_rt_list **file)
 		return (free_return(elements, FALSE));
 	type = elements[0];
 	if (is_valid_type(type) == NO)
+		return (free_return(elements, FALSE));
+	// TODO: 각 타입에 맞는 값들, 함수 이름 적절하게 정하기 
+	if (is_valid_elements(elements) == NO)
 		return (free_return(elements, FALSE));
 	new = new_rt_lst(elements);
 	rt_lstadd_back(file, new);
