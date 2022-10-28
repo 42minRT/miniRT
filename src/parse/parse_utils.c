@@ -65,6 +65,13 @@ t_is_return is_between(double conditional_num1, double conditional_num2, double 
 	return (NO);
 }
 
+t_is_return	is_rgb(char *str)
+{
+	if (is_between(0, 255, ft_atod(str)) == YES)
+		return (YES);
+	return (NO);
+}
+
 t_is_return	is_valid_type(char *type)
 {
 	static int	capital_type[3];
