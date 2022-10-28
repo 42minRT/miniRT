@@ -67,6 +67,8 @@ t_is_return is_between(double conditional_num1, double conditional_num2, double 
 
 t_is_return	is_rgb(char *str)
 {
+	if (is_valid_double_format(str) == NO)
+		return (NO);
 	if (is_between(0, 255, ft_atod(str)) == YES)
 		return (YES);
 	return (NO);
