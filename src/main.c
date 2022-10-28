@@ -20,6 +20,8 @@ int	main(int argc, char **argv)
 	void		*win_ptr; // 생성할 윈도우를 가리키는 포인터
 	t_data		img;
 
+	// TODO: 오프젝트 개수를 세서 1000대신 넣어주기
+	file = malloc(sizeof(t_rt_list) * 10000);
 	err = validate_file(argc, argv, &file);
 	if (err != NO_ERROR)
 		return (print_error(err));
