@@ -36,7 +36,6 @@ t_is_return	is_valid_type(char *type)
 	return (YES);
 }
 
-
 t_is_return	is_valid_elements(char **elements)
 {
 	char		*type;
