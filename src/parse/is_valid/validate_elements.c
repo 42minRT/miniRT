@@ -74,7 +74,6 @@ t_is_return	validate_elements(char *line, t_rt_list **file)
 	type = elements[0];
 	if (is_valid_type(type) == NO)
 		return (free_return(elements, NO));
-	// TODO: 각 타입에 맞는 값들, 함수 이름 적절하게 정하기 
 	if (is_valid_elements(elements) == NO)
 		return (free_return(elements, NO));
 	new = new_rt_lst(elements);
