@@ -67,12 +67,12 @@ t_is_return is_valid_cy_element(char **elements);
 t_is_return	is_rt_file(char *file);
 t_is_return	is_valid_type(char *type);
 t_is_return	is_valid_elements(char **elements);
-t_bool		validate_elements(char *line, t_rt_list **file);
+t_is_return	validate_elements(char *line, t_rt_list **file);
 
 // utils
-t_bool	free_return(char **target, t_bool boolean);
-double	ft_atod(char *str);
-int		count_elements(char **elements);
+t_is_return	free_return(char **target, t_is_return boolean);
+double		ft_atod(char *str);
+int			count_elements(char **elements);
 
 
 

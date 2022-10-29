@@ -1,6 +1,6 @@
 #include "../../include/structures.h"
 
-t_bool	free_return(char **target, t_bool boolean)
+t_is_return	free_return(char **target, t_is_return boolean)
 {
 	int	i;
 
