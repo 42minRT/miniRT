@@ -14,9 +14,9 @@ int	print_error(t_error err)
 		write(STDOUT_FILENO, ele_msg, ft_strlen(ele_msg));
 	if (err == SYSTEM_ERROR)
 		write(STDOUT_FILENO, sys_msg, ft_strlen(sys_msg));
-	while (TRUE)
-	{
-		;
-	}
+	// while (TRUE)
+	// {
+	// 	;
+	// }
 	return (ERROR);
 }

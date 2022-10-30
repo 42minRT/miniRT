@@ -93,6 +93,7 @@ t_error	validate_file(int argc, char **argv, t_rt_list **file)
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)
 		return (SYSTEM_ERROR);
+	*file = NULL;
 	while (1)
 	{
 		buf = get_next_line(fd);
