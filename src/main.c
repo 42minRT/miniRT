@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		return (print_error(err));
 	//file 을 이제 이케이케 잘 해야 한다
 
-    scene = scene_init(); 	// scene/scene_init 에 있음
+    scene = scene_init(file); 	// scene/scene_init 에 있음
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, scene->canvas.width, scene->canvas.height, "Hellow World!");
 	img.img = mlx_new_image(mlx_ptr, scene->canvas.width, scene->canvas.height);

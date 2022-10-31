@@ -1,4 +1,5 @@
 #include "../../include/scene.h"
+#include "../../include/utils.h"
 
 double	theta_to_radian(double theta)
 {
@@ -17,16 +18,16 @@ double	get_focal_len(double viewport_w, int fov)
 	return (a / b);
 }
 
-t_camera	camera(t_canvas *canvas, t_point3 origin)
+t_camera	camera(t_canvas *canvas, char **elements)
 {
 	t_camera	cam;
 	double		viewport_height;
 
 	viewport_height = 2.0;
-	cam.origin = origin;
+	cam.origin = point3(ft_atod(elements[0][0]), ft_atod(elements[0][1]), ft_atod(elements[0][2]));
 	cam.viewport_h = viewport_height;
 	cam.viewport_w = viewport_height * canvas->aspect_ratio;
-	cam.focal_len = get_focal_len(cam.viewport_w, 10);
+	cam.focal_len = get_focal_len(cam.viewport_w, ft_atoi(elements[2]));
 	cam.horizontal = vec3(cam.viewport_w, 0, 0);
 	cam.vertical = vec3(0, cam.viewport_h, 0);
 	cam.left_bottom = vminus(vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),

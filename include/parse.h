@@ -8,6 +8,8 @@
 # include <math.h>
 # include "structures.h"
 # include "libft.h"
+# include "utils.h"
+
 
 # define BUFFER_SIZE 42
 
@@ -68,12 +70,6 @@ t_is_return	is_rt_file(char *file);
 t_is_return	is_valid_type(char *type);
 t_is_return	is_valid_elements(char **elements);
 t_is_return	validate_elements(char *line, t_rt_list **file);
-
-// utils
-t_is_return	free_return(char **target, t_is_return boolean);
-double		ft_atod(char *str);
-int			count_elements(char **elements);
-
 
 
 // rt list
