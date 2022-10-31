@@ -46,4 +46,11 @@ re:
 %.o: %.c
 	$(CC) ${CFLAGS} ${DFLAGS} -c $< -o $@
 
+debug:
+	make bonus -C $(LIBFT)
+	cp $(LIBFT)/$(LIBFT_LIB) ./
+	make -C $(MLX)
+	cp $(MLX)/$(MLX_A) ./	
+	$(CC) $(wildcard src/*.c) $(wildcard src/**/*.c) $(wildcard src/**/**/*.c) $(LIBFT_LIB) $(MLX_LIB) $(DFLAGS) -o debug.out
+
 .PHONY : all clean fclean
