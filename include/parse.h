@@ -66,11 +66,10 @@ t_is_return is_valid_cy_element(char **elements);
 
 
 //parse_elements
-t_is_return	is_rt_file(char *file);
-t_is_return	is_valid_type(char *type);
-t_is_return	is_valid_elements(char **elements);
 t_is_return	parse_elements(char *line, t_rt_list **file);
 
+// is_rt_file
+t_is_return	is_rt_file(char *file);
 
 // rt list
 size_t		ft_arrlen(char **array);
