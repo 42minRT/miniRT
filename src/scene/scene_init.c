@@ -1,6 +1,7 @@
 #include "../../include/scene.h"
 #include "../../include/object_utils.h"
 #include "../../include/vector_utils.h"
+#include "../../include/utils.h"
 
 t_scene	*scene_init(t_rt_list *file)
 {
