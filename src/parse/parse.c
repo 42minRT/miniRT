@@ -17,7 +17,7 @@ t_error	validate_file(int argc, char **argv, t_rt_list **file)
 		if (buf == NULL)
 			break ;
 		write(1, buf, ft_strlen(buf));
-		if (validate_elements(buf, file) == FALSE)
+		if (parse_elements(buf, file) == FALSE)
 			return (ELEMENTS_ERROR);
 		free(buf);
 	}

@@ -61,7 +61,7 @@ t_is_return	is_valid_elements(char **elements)
 	return (ret);
 }
 
-t_is_return	validate_elements(char *line, t_rt_list **file)
+t_is_return	parse_elements(char *line, t_rt_list **file)
 {
 	char	**elements;
 	char	*type;

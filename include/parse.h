@@ -65,11 +65,11 @@ t_is_return	is_valid_pl_element(char **elements);
 t_is_return is_valid_cy_element(char **elements);
 
 
-//validate_elements
+//parse_elements
 t_is_return	is_rt_file(char *file);
 t_is_return	is_valid_type(char *type);
 t_is_return	is_valid_elements(char **elements);
-t_is_return	validate_elements(char *line, t_rt_list **file);
+t_is_return	parse_elements(char *line, t_rt_list **file);
 
 
 // rt list
