@@ -3,6 +3,9 @@
 
 # include "libft.h"
 
+#define	X_EVENT_KEY_PRESS 2
+#define	X_EVENT_CLOSE 17
+#define	KEY_ESC  53
 
 // error number
 typedef enum e_error

@@ -6,7 +6,7 @@
 #include "../include/color.h"
 #include "../include/scene.h"
 #include "../include/trace.h"
-#include "../include/draw.h"
+#include "../include/window.h"
 #include "../mlx/mlx.h"
 
 int	main(int argc, char **argv)
@@ -33,6 +33,8 @@ int	main(int argc, char **argv)
 								&img.endian);
 	draw_image(scene, &img); // 이미지를 그리자?
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
+	mlx_hook(win_ptr, X_EVENT_KEY_PRESS, 0, &handle_key, NULL);
+	mlx_hook(win_ptr, X_EVENT_CLOSE, 0, &close_window, 0);
 	mlx_loop(mlx_ptr); // loop를 돌면서 event를 기다리고, 생성한 윈도우를 Rendering한다.
     return (0);
 }
