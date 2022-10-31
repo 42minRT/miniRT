@@ -41,7 +41,7 @@ char		*ft_copy_string(char *dst, t_string *t_str);
 int			ft_str_append(t_string *t_str, char c);
 
 // parse
-t_error	validate_file(int argc, char **argv, t_rt_list **file);
+t_error		parse_file(int argc, char **argv, t_rt_list **file);
 
 // is_valid_elements_utils_base
 t_is_return	is_valid_double_format(char *to_double_str);

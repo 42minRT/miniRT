@@ -1,6 +1,6 @@
 #include "../../include/parse.h"
 
-t_error	validate_file(int argc, char **argv, t_rt_list **file)
+t_error	parse_file(int argc, char **argv, t_rt_list **file)
 {
 	int		fd;
 	char	*buf;
