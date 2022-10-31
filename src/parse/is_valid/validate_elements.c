@@ -40,7 +40,10 @@ t_is_return	is_valid_elements(char **elements)
 {
 	char		*type;
 	t_is_return	ret;
+	char		*last_element;
 
+	last_element = elements[count_elements(elements) - 1];
+	last_element[ft_strlen(last_element) - 1] = '\0';;
 	type = elements[0];
 	ret = YES;
 	if (ft_strncmp(type, "A", 2) == 0)

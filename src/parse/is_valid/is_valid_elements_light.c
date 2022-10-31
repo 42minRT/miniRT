@@ -2,10 +2,6 @@
 
 t_is_return	is_valid_a_element(char **elements)
 {
-	char	*last_element;
-
-	last_element = elements[count_elements(elements) - 1];
-	last_element[ft_strlen(last_element) - 1] = '\0';
 	if (count_elements(elements) != 3)
 		return (NO);
 	if (is_valid_double_format(elements[1]) == NO)
@@ -19,10 +15,6 @@ t_is_return	is_valid_a_element(char **elements)
 
 t_is_return	is_valid_l_element(char **elements)
 {
-	char	*last_element;
-
-	last_element = elements[count_elements(elements) - 1];
-	last_element[ft_strlen(last_element) - 1] = '\0';
 	if (count_elements(elements) != 4)
 		return (NO);
 	if (is_xyz_coordinate(elements[1]) == NO)
