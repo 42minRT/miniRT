@@ -2,7 +2,7 @@
 
 double	theta_to_radian(double theta)
 {
-	return (theta * M_PI / 180.00000000);
+	return (theta * M_PI / 180.0);
 }
 
 double	get_focal_len(double viewport_w, int fov)
