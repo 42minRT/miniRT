@@ -1,6 +1,6 @@
 #include "../../include/structures.h"
 
-void	free_spited(char **target)
+void	free_splited(char **target)
 {
 	int	i;
 

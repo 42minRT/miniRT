@@ -4,7 +4,7 @@
 # include "structures.h"
 
 t_is_return	free_return(char **target, t_is_return boolean);
-void		free_spited(char **target);
+void		free_splited(char **target);
 double		ft_atod(char *str);
 int			count_elements(char **elements);
 

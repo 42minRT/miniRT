@@ -26,7 +26,7 @@ t_point3	parse_xyz_coordination(char *xyz_str)
 	y = ft_atod(xyz[1]);
 	z = ft_atod(xyz[2]);
 	xyz_coordination = point3(x, y, z);
-	free_spited(xyz);
+	free_splited(xyz);
 	return (xyz_coordination);
 }
 
@@ -60,6 +60,6 @@ t_vec3	parse_vec3(char *vector_str)
 	y = ft_atod(xyz[1]);
 	z = ft_atod(xyz[2]);
 	xyz_vector = point3(x, y, z);
-	free_spited(xyz);
+	free_splited(xyz);
 	return (xyz_vector);
 }
