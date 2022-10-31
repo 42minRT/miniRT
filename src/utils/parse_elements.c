@@ -43,6 +43,7 @@ t_color3	parse_rgb(char *rgb_str)
 	g = ft_atod(rgb[1]);
 	b = ft_atod(rgb[2]);
 	rgb_color = point3(r, g, b);
+	free_splited(rgb);
 	return (rgb_color);	
 }
 
@@ -59,5 +60,6 @@ t_vec3	parse_vec3(char *vector_str)
 	y = ft_atod(xyz[1]);
 	z = ft_atod(xyz[2]);
 	xyz_vector = point3(x, y, z);
+	free_spited(xyz);
 	return (xyz_vector);
 }
