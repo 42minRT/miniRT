@@ -21,7 +21,7 @@ static t_is_return	is_valid_type(char *type)
 	return (YES);
 }
 
-static t_is_return	is_valid_elements(char **elements)
+static t_is_return	is_valid_elements_with_no_newline(char **elements)
 {
 	char		*type;
 	t_is_return	ret;
@@ -61,7 +61,7 @@ t_is_return	parse_elements(char *line, t_rt_list **file)
 	type = elements[0];
 	if (is_valid_type(type) == NO)
 		return (free_return(elements, NO));
-	if (is_valid_elements(elements) == NO)
+	if (is_valid_elements_with_no_newline(elements) == NO)
 		return (free_return(elements, NO));
 	new = new_rt_lst(elements);
 	rt_lstadd_back(file, new);
