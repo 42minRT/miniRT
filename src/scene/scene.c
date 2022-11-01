@@ -18,7 +18,16 @@ double	get_focal_len(double viewport_w, int fov)
 	return (a / b);
 }
 
-t_camera	camera(t_canvas *canvas, char **elements)
+t_color3  set_ambient(char **ambient_values)
+{
+	t_color3 ambient;
+
+	ambient = vmult(parse_xyz_coordination(ambient_values[1]),
+					ft_atod(ambient_values[0]));
+	return (ambient);
+}
+
+t_camera	set_camera(t_canvas *canvas, char **elements)
 {
 	t_camera	cam;
 	double		viewport_height;
