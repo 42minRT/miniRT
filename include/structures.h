@@ -165,14 +165,14 @@ struct	s_sphere
 
 struct s_plain
 {
-	t_point3	center;
+	t_point3	origin;
 	t_vec3		dir_v;
 	t_color3	color;
 };
 
 struct s_cylinder
 {
-	t_point3	center;
+	t_point3	origin;
 	t_vec3		dir_v;
 	double		diameter;
 	double		height;

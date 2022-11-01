@@ -27,6 +27,34 @@ t_sphere	*new_sphere(t_point3 center, double radius)
 	return (sp);
 }
 
+t_plain	*new_plain(t_point3 origin, t_vec3 dir_v, t_color3 color)
+{
+	t_plain	*pl;
+
+	pl = malloc(sizeof(t_plain));
+	if (pl == NULL)
+		return (NULL);
+	pl->origin = origin;
+	pl->dir_v = dir_v;
+	pl->color = color;
+	return (pl);
+}
+
+t_cylinder	*new_cylinder(t_point3 origin, t_vec3 dir_v, double dia, double height, t_color3 color)
+{
+	t_cylinder	*cy;
+
+	cy = malloc(sizeof(t_cylinder));
+	if (cy == NULL)
+		return (NULL);
+	cy->origin = origin;
+	cy->dir_v = dir_v;
+	cy->diameter = dia;
+	cy->height = height;
+	cy->color = color;
+	return (cy);
+}
+
 t_light	*new_light_point(t_point3 light_origin, t_color3 light_color, double bright_ratio)
 {
 	t_light	*light;
