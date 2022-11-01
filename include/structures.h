@@ -4,9 +4,9 @@
 # include "libft.h"
 
 // mlx event key
-#define	X_EVENT_KEY_PRESS 2
-#define	X_EVENT_CLOSE 17
-#define	KEY_ESC  53
+# define X_EVENT_KEY_PRESS 2
+# define X_EVENT_CLOSE 17
+# define KEY_ESC 53
 
 // error number
 typedef enum e_error
@@ -45,13 +45,13 @@ typedef enum e_object_type
 typedef struct s_rt_list	t_rt_list;
 struct s_rt_list
 {
-	char	*type;
-	char	**elements;
+	char		*type;
+	char		**elements;
 	t_rt_list	*next;
 };
 
 // mlx img
-typedef struct s_data	t_data;
+typedef struct s_data		t_data;
 struct	s_data {
 	void	*img;
 	char	*addr;
@@ -60,31 +60,31 @@ struct	s_data {
 	int		endian;
 };
 
-typedef struct s_vec3	t_vec3;
-typedef struct s_vec3	t_point3;
-typedef struct s_vec3	t_color3;
+typedef struct s_vec3		t_vec3;
+typedef struct s_vec3		t_point3;
+typedef struct s_vec3		t_color3;
 
 // ray 구조체
-typedef struct s_ray	t_ray;
+typedef struct s_ray		t_ray;
 
 // scene 구조체
-typedef struct s_scene	t_scene;
-typedef struct s_canvas	t_canvas;
-typedef struct s_camera	t_camera;
-typedef struct s_light	t_light;
+typedef struct s_scene		t_scene;
+typedef struct s_canvas		t_canvas;
+typedef struct s_camera		t_camera;
+typedef struct s_light		t_light;
 typedef struct s_hit_record	t_hit_record;
 
 // object 구조체
-typedef struct s_object	t_object;
-typedef	struct s_sphere	t_sphere;
-typedef	struct s_plain	t_plain;
+typedef struct s_object		t_object;
+typedef struct s_sphere		t_sphere;
+typedef struct s_plain		t_plain;
 typedef struct s_cylinder	t_cylinder;
 
 struct s_vec3
 {
-	double x;
-	double y;
-	double z;
+	double	x;
+	double	y;
+	double	z;
 };
 
 struct s_ray
@@ -113,9 +113,9 @@ struct	s_canvas
 
 struct s_color3
 {
-	double x;
-	double y;
-	double z;
+	double	x;
+	double	y;
+	double	z;
 };
 
 struct	s_hit_record
@@ -131,20 +131,20 @@ struct	s_hit_record
 
 struct s_light
 {
-    t_point3    origin;
-    t_color3    light_color;
-    double      bright_ratio;
+	t_point3	origin;
+	t_color3	light_color;
+	double		bright_ratio;
 };
 
 struct s_scene
 {
-    t_canvas        canvas;
-    t_camera        camera;
-    t_object        *world;
-    t_object        *light;
-    t_color3        ambient;
-    t_ray           ray;
-    t_hit_record    rec;
+	t_canvas		canvas;
+	t_camera		camera;
+	t_object		*world;
+	t_object		*light;
+	t_color3		ambient;
+	t_ray			ray;
+	t_hit_record	rec;
 };
 
 // object 구조체
