@@ -6,7 +6,7 @@
 
 # define _USE_MATH_DEFINES
 
-t_scene		*scene_init(t_rt_list *file);
+t_scene		*init_scene(t_rt_list *file);
 t_canvas	set_canvas(int width, int height);
 t_camera	set_camera(t_canvas *canvas, char **elements);
 t_color3	set_ambient(char **ambient_values);

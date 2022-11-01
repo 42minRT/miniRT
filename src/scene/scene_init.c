@@ -14,7 +14,7 @@ t_object	*init_world(t_rt_list *file)
 	return (world);
 }
 
-t_scene	*scene_init(t_rt_list *file)
+t_scene	*init_scene(t_rt_list *file)
 {
 	t_scene		*scene;
 	t_light		*lights;
