@@ -24,7 +24,7 @@ t_camera	camera(t_canvas *canvas, char **elements)
 	double		viewport_height;
 
 	viewport_height = 2.0;
-	cam.origin = point3(ft_atod(elements[0][0]), ft_atod(elements[0][1]), ft_atod(elements[0][2]));
+	cam.origin = parse_xyz_coordination(elements[0]);
 	cam.viewport_h = viewport_height;
 	cam.viewport_w = viewport_height * canvas->aspect_ratio;
 	cam.focal_len = get_focal_len(cam.viewport_w, ft_atoi(elements[2]));
