@@ -78,6 +78,7 @@ typedef struct s_hit_record	t_hit_record;
 typedef struct s_object	t_object;
 typedef	struct s_sphere	t_sphere;
 typedef	struct s_plain	t_plain;
+typedef struct s_cylinder	t_cylinder;
 
 struct s_vec3
 {
@@ -169,5 +170,13 @@ struct s_plain
 	t_color3	color;
 };
 
+struct s_cylinder
+{
+	t_point3	center;
+	t_vec3		dir_v;
+	double		diameter;
+	double		height;
+	t_color3	color;
+};
 
 #endif
