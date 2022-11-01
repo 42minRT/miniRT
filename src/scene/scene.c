@@ -20,8 +20,11 @@ double	get_focal_len(double viewport_w, int fov)
 
 t_color3  set_ambient(char **ambient_values)
 {
-    return (vmult(parse_xyz_coordination(ambient_values[1]),
-            ft_atod(ambient_values[0])));
+	t_color3 ambient;
+
+	ambient = vmult(parse_xyz_coordination(ambient_values[1]),
+					ft_atod(ambient_values[0]));
+	return (ambient);
 }
 
 t_camera	set_camera(t_canvas *canvas, char **elements)
