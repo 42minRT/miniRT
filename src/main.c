@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	void		*win_ptr; // 생성할 윈도우를 가리키는 포인터
 	t_data		img;
 
-	err = validate_file(argc, argv, &file);
+	err = parse_file(argc, argv, &file);
 	if (err != NO_ERROR)
 		return (print_error(err));
 	//file 을 이제 이케이케 잘 해야 한다

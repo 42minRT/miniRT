@@ -1,21 +1,6 @@
 #include "../../../include/parse.h"
 
-t_is_return	is_rt_file(char *file_name)
-{
-	int		len;
-	char	*file_ext;
-	t_is_return	match;
-
-	match = NO;
-	len = ft_strlen(file_name);
-	file_ext = ft_substr(file_name, len - 3, 3);
-	if (ft_strncmp(file_ext, ".rt", 3) == 0)
-		match = YES;
-	free(file_ext);
-	return (match);
-}
-
-t_is_return	is_valid_type(char *type)
+static t_is_return	is_valid_type(char *type)
 {
 	static int	capital_type[3];
 
@@ -36,11 +21,14 @@ t_is_return	is_valid_type(char *type)
 	return (YES);
 }
 
-t_is_return	is_valid_elements(char **elements)
+static t_is_return	is_valid_elements_with_no_newline(char **elements)
 {
 	char		*type;
 	t_is_return	ret;
+	char		*last_element;
 
+	last_element = elements[count_elements(elements) - 1];
+	last_element[ft_strlen(last_element) - 1] = '\0';
 	type = elements[0];
 	ret = YES;
 	if (ft_strncmp(type, "A", 2) == 0)
@@ -58,7 +46,7 @@ t_is_return	is_valid_elements(char **elements)
 	return (ret);
 }
 
-t_is_return	validate_elements(char *line, t_rt_list **file)
+t_is_return	parse_elements(char *line, t_rt_list **file)
 {
 	char	**elements;
 	char	*type;
@@ -73,7 +61,7 @@ t_is_return	validate_elements(char *line, t_rt_list **file)
 	type = elements[0];
 	if (is_valid_type(type) == NO)
 		return (free_return(elements, NO));
-	if (is_valid_elements(elements) == NO)
+	if (is_valid_elements_with_no_newline(elements) == NO)
 		return (free_return(elements, NO));
 	new = new_rt_lst(elements);
 	rt_lstadd_back(file, new);

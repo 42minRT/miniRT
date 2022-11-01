@@ -55,17 +55,6 @@ void	rt_lstadd_back(t_rt_list **lst, t_rt_list *new)
 	cur->next = new;
 }
 
-char	**get_elements_by_type(t_rt_list *file, char *type)
-{
-	while (file->next)
-	{
-		if (ft_strncmp(type, file->type, ft_strlen(file->type)) == 0)
-			return (file->elements);
-		file = file->next;
-	}
-	return (NULL);
-}
-
 // 출력용 임시 함수
 void	rt_lstprint(t_rt_list *lst)
 {
