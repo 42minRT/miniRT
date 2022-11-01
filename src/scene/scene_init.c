@@ -3,10 +3,20 @@
 #include "../../include/vector_utils.h"
 #include "../../include/utils.h"
 
+t_object	*init_world(t_rt_list *file)
+{
+	t_object	*world;
+
+	world = NULL;
+	object_append(&world, new_object(SP, new_sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0)));
+	object_append(&world, new_object(SP, new_sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0)));
+	object_append(&world, new_object(SP, new_sphere(point3(0, -1000, 0), 995), color3(1, 1, 1)));
+	return (world);
+}
+
 t_scene	*scene_init(t_rt_list *file)
 {
 	t_scene		*scene;
-	t_object	*world;
 	t_light		*lights;
 
 	scene = malloc(sizeof(t_scene));
@@ -15,10 +25,7 @@ t_scene	*scene_init(t_rt_list *file)
 	scene->canvas = set_canvas(400, 300);
 	scene->ambient = set_ambient(get_elements_by_type(file, "A"));
 	scene->camera = set_camera(&scene->canvas, get_elements_by_type(file, "C"));
-	world = new_object(SP, new_sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0));
-	object_append(&world, new_object(SP, new_sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0)));
-	object_append(&world, new_object(SP, new_sphere(point3(0, -1000, 0), 995), color3(1, 1, 1)));
-	scene->world = world;
+	scene->world = init_world(file);
 	scene->light = new_light_point(point3(0, 25, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0));
 
 	return (scene);
