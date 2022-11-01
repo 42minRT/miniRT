@@ -18,7 +18,7 @@ double	get_focal_len(double viewport_w, int fov)
 	return (a / b);
 }
 
-t_camera	camera(t_canvas *canvas, char **elements)
+t_camera	set_camera(t_canvas *canvas, char **elements)
 {
 	t_camera	cam;
 	double		viewport_height;
