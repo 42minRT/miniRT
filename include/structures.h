@@ -12,10 +12,10 @@
 typedef enum e_error
 {
 	NO_ERROR = 0,
-	ERROR = 1,
-	ARG_ERROR = 1,
-	ELEMENTS_ERROR = 1,
-	SYSTEM_ERROR = 1
+	ERROR,
+	ARG_ERROR,
+	ELEMENTS_ERROR,
+	SYSTEM_ERROR
 }	t_error;
 
 //boolean 값
