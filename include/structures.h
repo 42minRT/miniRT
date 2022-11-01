@@ -141,7 +141,7 @@ struct s_scene
 	t_canvas		canvas;
 	t_camera		camera;
 	t_object		*world;
-	t_object		*light;
+	t_light			*light;
 	t_color3		ambient;
 	t_ray			ray;
 	t_hit_record	rec;
