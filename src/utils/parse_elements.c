@@ -59,7 +59,7 @@ t_vec3	parse_vec3(char *vector_str)
 	x = ft_atod(xyz[0]);
 	y = ft_atod(xyz[1]);
 	z = ft_atod(xyz[2]);
-	xyz_vector = point3(x, y, z);
+	xyz_vector = vec3(x, y, z);
 	free_splited(xyz);
 	return (xyz_vector);
 }
