@@ -3,18 +3,19 @@
 
 # include "libft.h"
 
-#define	X_EVENT_KEY_PRESS 2
-#define	X_EVENT_CLOSE 17
-#define	KEY_ESC  53
+// mlx event key
+# define X_EVENT_KEY_PRESS 2
+# define X_EVENT_CLOSE 17
+# define KEY_ESC 53
 
 // error number
 typedef enum e_error
 {
 	NO_ERROR = 0,
 	ERROR = 1,
-	ARG_ERROR = 100,
-	ELEMENTS_ERROR = 101,
-	SYSTEM_ERROR = 102
+	ARG_ERROR = 1,
+	ELEMENTS_ERROR = 1,
+	SYSTEM_ERROR = 1
 }	t_error;
 
 //boolean 값
@@ -41,17 +42,16 @@ typedef enum e_object_type
 
 # define EPSILON 1e-6
 
-// t_list 였던 것. 겹쳐서 t_rt_list 로 변경.
 typedef struct s_rt_list	t_rt_list;
 struct s_rt_list
 {
-	char	*type;
-	char	**elements;
+	char		*type;
+	char		**elements;
 	t_rt_list	*next;
 };
 
 // mlx img
-typedef struct s_data	t_data;
+typedef struct s_data		t_data;
 struct	s_data {
 	void	*img;
 	char	*addr;
@@ -60,25 +60,31 @@ struct	s_data {
 	int		endian;
 };
 
-typedef struct s_vec3	t_vec3;
-typedef struct s_vec3	t_point3;
-typedef struct s_vec3	t_color3;
-typedef struct s_ray	t_ray;
-typedef struct s_camera	t_camera;
-typedef struct s_canvas	t_canvas;
-typedef	struct s_sphere	t_sphere;
-typedef struct s_hit_record	t_hit_record;
-typedef struct s_object	t_object;
-typedef struct s_scene	t_scene;
-typedef struct s_light	t_light;
-typedef struct s_color	t_color;
+typedef struct s_vec3		t_vec3;
+typedef struct s_vec3		t_point3;
+typedef struct s_vec3		t_color3;
 
+// ray 구조체
+typedef struct s_ray		t_ray;
+
+// scene 구조체
+typedef struct s_scene		t_scene;
+typedef struct s_canvas		t_canvas;
+typedef struct s_camera		t_camera;
+typedef struct s_light		t_light;
+typedef struct s_hit_record	t_hit_record;
+
+// object 구조체
+typedef struct s_object		t_object;
+typedef struct s_sphere		t_sphere;
+typedef struct s_plain		t_plain;
+typedef struct s_cylinder	t_cylinder;
 
 struct s_vec3
 {
-	double x;
-	double y;
-	double z;
+	double	x;
+	double	y;
+	double	z;
 };
 
 struct s_ray
@@ -105,25 +111,11 @@ struct	s_canvas
 	double	aspect_ratio;
 };
 
-struct	s_sphere
-{
-	t_point3	center;
-	double		radius;
-	double		radius2;
-};
-
 struct s_color3
 {
-	double x;
-	double y;
-	double z;
-};
-
-struct s_color
-{
-	double r;
-	double g;
-	double b;
+	double	x;
+	double	y;
+	double	z;
 };
 
 struct	s_hit_record
@@ -137,6 +129,25 @@ struct	s_hit_record
 	t_color3	albedo;
 };
 
+struct s_light
+{
+	t_point3	origin;
+	t_color3	light_color;
+	double		bright_ratio;
+};
+
+struct s_scene
+{
+	t_canvas		canvas;
+	t_camera		camera;
+	t_object		*world;
+	t_object		*light;
+	t_color3		ambient;
+	t_ray			ray;
+	t_hit_record	rec;
+};
+
+// object 구조체
 struct	s_object
 {
 	t_object_type	type;
@@ -145,23 +156,27 @@ struct	s_object
 	t_color3		albedo;
 };
 
-struct s_light
+struct	s_sphere
 {
-    t_point3    origin;
-    t_color3    light_color;
-    double      bright_ratio;
+	t_point3	center;
+	double		radius;
+	double		radius2;
 };
 
-struct s_scene
+struct s_plain
 {
-    t_canvas        canvas;
-    t_camera        camera;
-    t_object        *world;
-    t_object        *light;
-    t_color3        ambient;
-    t_ray           ray;
-    t_hit_record    rec;
+	t_point3	origin;
+	t_vec3		dir_v;
+	t_color3	color;
 };
 
+struct s_cylinder
+{
+	t_point3	origin;
+	t_vec3		dir_v;
+	double		diameter;
+	double		height;
+	t_color3	color;
+};
 
 #endif
