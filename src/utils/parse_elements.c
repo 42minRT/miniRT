@@ -42,7 +42,7 @@ t_color3	parse_rgb(char *rgb_str)
 	r = ft_atod(rgb[0]);
 	g = ft_atod(rgb[1]);
 	b = ft_atod(rgb[2]);
-	rgb_color = point3(r, g, b);
+	rgb_color = color3(r, g, b);
 	free_splited(rgb);
 	return (rgb_color);	
 }
