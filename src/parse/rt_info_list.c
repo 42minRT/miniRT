@@ -27,6 +27,22 @@ char	**new_elements_without_type(char **content)
 	return (new);
 }
 
+static t_object_type	get_type(char *type_str)
+{
+	if (ft_strncmp(type_str, "A", ft_strlen(type_str)) == 0)
+		return (A);
+	else if (ft_strncmp(type_str, "C", ft_strlen(type_str)) == 0)
+		return (C);
+	else if (ft_strncmp(type_str, "L", ft_strlen(type_str)) == 0)
+		return (L);
+	else if (ft_strncmp(type_str, "sp", ft_strlen(type_str)) == 0)
+		return (SP);
+	else if (ft_strncmp(type_str, "pl", ft_strlen(type_str)) == 0)
+		return (PL);
+	else if (ft_strncmp(type_str, "cy", ft_strlen(type_str)) == 0)
+		return (CY);
+}
+
 t_rt_list	*new_rt_lst(char **content)
 {
 	t_rt_list	*new;
@@ -34,7 +50,7 @@ t_rt_list	*new_rt_lst(char **content)
 	new = malloc(sizeof(t_rt_list));
 	if (new == NULL)
 		return (NULL);
-	new->type = ft_strdup(content[0]);
+	new->type = get_type(content[0]);
 	new->elements = new_elements_without_type(content);
 	new->next = NULL;
 	return (new);

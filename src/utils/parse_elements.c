@@ -2,11 +2,11 @@
 #include "../../include/vector_utils.h"
 #include "../../include/utils.h"
 
-char	**get_elements_by_type(t_rt_list *file, char *type)
+char	**get_elements_by_type(t_rt_list *file, t_object_type type)
 {
 	while (file->next)
 	{
-		if (ft_strncmp(type, file->type, ft_strlen(file->type)) == 0)
+		if (file->type == type)
 			return (file->elements);
 		file = file->next;
 	}
