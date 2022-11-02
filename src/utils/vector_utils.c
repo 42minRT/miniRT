@@ -159,3 +159,12 @@ t_vec3	vmin(t_vec3 vec1, t_vec3 vec2)
 		vec1.z = vec2.z;
 	return (vec1);
 }
+
+t_vec3	vec3_up(t_vec3 vec)
+{
+	if (vec.x == 0 && vec.y == 1 && vec.z == 0)
+		return (vec3(0, 0, 1));
+	if (vec.x == 0 && vec.y == -1 && vec.z == 0)
+		return (vec3(0, 0, -1));
+	return (vec3(0, 1, 0));
+}
