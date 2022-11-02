@@ -160,7 +160,7 @@ t_vec3	vmin(t_vec3 vec1, t_vec3 vec2)
 	return (vec1);
 }
 
-t_vec3	vec3_up(t_vec3 vec)
+t_vec3	vup(t_vec3 vec)
 {
 	if (vec.x == 0 && vec.y == 1 && vec.z == 0)
 		return (vec3(0, 0, 1));
