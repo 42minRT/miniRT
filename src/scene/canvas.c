@@ -1,6 +1,6 @@
 #include "../../include/scene.h"
 
-t_canvas	canvas(int width, int height)
+t_canvas	set_canvas(int width, int height)
 {
 	t_canvas	canvas;
 

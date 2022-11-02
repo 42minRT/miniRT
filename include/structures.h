@@ -8,14 +8,17 @@
 # define X_EVENT_CLOSE 17
 # define KEY_ESC 53
 
+# define EPSILON 1e-6
+# define LUMEN 3
+
 // error number
 typedef enum e_error
 {
 	NO_ERROR = 0,
-	ERROR = 1,
-	ARG_ERROR = 1,
-	ELEMENTS_ERROR = 1,
-	SYSTEM_ERROR = 1
+	ERROR,
+	ARG_ERROR,
+	ELEMENTS_ERROR,
+	SYSTEM_ERROR
 }	t_error;
 
 //boolean 값
@@ -35,19 +38,21 @@ typedef enum e_is_return
 //	object_type 정리함. EPSILON 은 int 가 아니라 뺌
 typedef enum e_object_type
 {
-	SP = 0,
-	LIGHT_POINT,
-	LUMEN
+	A,
+	C,
+	L,
+	SP,
+	PL,
+	CY,
 }	t_object_type;
 
-# define EPSILON 1e-6
 
 typedef struct s_rt_list	t_rt_list;
 struct s_rt_list
 {
-	char		*type;
-	char		**elements;
-	t_rt_list	*next;
+	t_object_type	type;
+	char			**elements;
+	t_rt_list		*next;
 };
 
 // mlx img
@@ -141,7 +146,7 @@ struct s_scene
 	t_canvas		canvas;
 	t_camera		camera;
 	t_object		*world;
-	t_object		*light;
+	t_light			*light;
 	t_color3		ambient;
 	t_ray			ray;
 	t_hit_record	rec;
@@ -152,8 +157,8 @@ struct	s_object
 {
 	t_object_type	type;
 	void			*element;
-	void			*next;
 	t_color3		albedo;
+	void			*next;
 };
 
 struct	s_sphere
@@ -167,7 +172,6 @@ struct s_plain
 {
 	t_point3	origin;
 	t_vec3		dir_v;
-	t_color3	color;
 };
 
 struct s_cylinder
@@ -176,7 +180,6 @@ struct s_cylinder
 	t_vec3		dir_v;
 	double		diameter;
 	double		height;
-	t_color3	color;
 };
 
 #endif

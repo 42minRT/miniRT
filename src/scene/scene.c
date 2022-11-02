@@ -22,7 +22,7 @@ t_color3  set_ambient(char **ambient_values)
 {
 	t_color3 ambient;
 
-	ambient = vmult(parse_xyz_coordination(ambient_values[1]),
+	ambient = vmult(parse_rgb(ambient_values[1]),
 					ft_atod(ambient_values[0]));
 	return (ambient);
 }
@@ -42,4 +42,12 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 	cam.left_bottom = vminus(vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
 				vdivide(cam.vertical, 2)), vec3(0, 0, cam.focal_len));
 	return (cam);
+}
+
+t_light	*get_new_light(char **elements)
+{
+	t_light	*light;
+
+	light = new_light(parse_vec3(elements[0]), ft_atod(elements[1]), parse_rgb(elements[2]));
+	return (light);
 }

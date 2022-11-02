@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Launch",
 			"program": "${workspaceFolder}/debug.out",
-			"args": ["error_case.rt"],
+			"args": ["tmp.rt"],
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "debug"
 		}

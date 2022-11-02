@@ -2,11 +2,11 @@
 #include "../../include/vector_utils.h"
 #include "../../include/utils.h"
 
-char	**get_elements_by_type(t_rt_list *file, char *type)
+char	**get_elements_by_type(t_rt_list *file, t_object_type type)
 {
 	while (file->next)
 	{
-		if (ft_strncmp(type, file->type, ft_strlen(file->type)) == 0)
+		if (file->type == type)
 			return (file->elements);
 		file = file->next;
 	}
@@ -42,7 +42,8 @@ t_color3	parse_rgb(char *rgb_str)
 	r = ft_atod(rgb[0]);
 	g = ft_atod(rgb[1]);
 	b = ft_atod(rgb[2]);
-	rgb_color = vunit(color3(r, g, b));
+	rgb_color = color3((double)(r / 255), (double)(g / 255), (double)(b / 255));
+
 	free_splited(rgb);
 	return (rgb_color);	
 }
