@@ -22,7 +22,7 @@ t_color3  set_ambient(char **ambient_values)
 {
 	t_color3 ambient;
 
-	ambient = vmult(parse_xyz_coordination(ambient_values[1]),
+	ambient = vmult(parse_rgb(ambient_values[1]),
 					ft_atod(ambient_values[0]));
 	return (ambient);
 }
