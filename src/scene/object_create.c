@@ -53,7 +53,7 @@ t_cylinder	*new_cylinder(t_point3 origin, t_vec3 dir_v, double dia, double heigh
 	return (cy);
 }
 
-t_light	*new_light_point(t_point3 light_origin, t_color3 light_color, double bright_ratio)
+t_light	*new_light(t_point3 light_origin, double bright_ratio, t_color3 light_color)
 {
 	t_light	*light;
 

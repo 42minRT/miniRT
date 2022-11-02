@@ -33,8 +33,8 @@ t_scene	*init_scene(t_rt_list *file)
 	scene->canvas = set_canvas(400, 200);
 	scene->ambient = set_ambient(get_elements_by_type(file, A));
 	scene->camera = set_camera(&scene->canvas, get_elements_by_type(file, C));
+	scene->light = get_new_light(get_elements_by_type(file, L));
 	scene->world = init_world(file);
-	scene->light = new_light_point(point3(0, 25, 0), color3(1, 1, 1), 0.1);
 
 	return (scene);
 }

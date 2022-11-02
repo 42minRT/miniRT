@@ -43,3 +43,11 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 				vdivide(cam.vertical, 2)), vec3(0, 0, cam.focal_len));
 	return (cam);
 }
+
+t_light	*get_new_light(char **elements)
+{
+	t_light	*light;
+
+	light = new_light(parse_vec3(elements[0]), ft_atod(elements[1]), parse_rgb(elements[2]));
+	return (light);
+}
