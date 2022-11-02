@@ -43,6 +43,7 @@ t_color3	parse_rgb(char *rgb_str)
 	g = ft_atod(rgb[1]);
 	b = ft_atod(rgb[2]);
 	rgb_color = color3((double)(r / 255), (double)(g / 255), (double)(b / 255));
+
 	free_splited(rgb);
 	return (rgb_color);	
 }
