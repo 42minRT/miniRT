@@ -11,7 +11,6 @@
 
 int	main(int argc, char **argv)
 {
-	t_object	*world;
 	t_scene	 *scene;
 	t_rt_list	*file;
 	t_error		err;
