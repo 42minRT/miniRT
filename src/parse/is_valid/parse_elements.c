@@ -28,7 +28,8 @@ static t_is_return	is_valid_elements_with_no_newline(char **elements)
 	char		*last_element;
 
 	last_element = elements[count_elements(elements) - 1];
-	last_element[ft_strlen(last_element) - 1] = '\0';
+	if (last_element[ft_strlen(last_element) - 1] == '\n')
+		last_element[ft_strlen(last_element) - 1] = '\0';
 	type = elements[0];
 	ret = YES;
 	if (ft_strncmp(type, "A", 2) == 0)
