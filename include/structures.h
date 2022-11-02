@@ -101,6 +101,9 @@ struct s_ray
 struct s_camera
 {
 	t_point3	origin;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
+	t_vec3		w_dir;
 	double		viewport_h;
 	double		viewport_w;
 	t_vec3		horizontal;
