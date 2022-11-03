@@ -6,16 +6,18 @@ t_bool	check_cylinder(t_object *world, t_ray *ray, t_hit_record *rec, double roo
 {
 	t_cylinder	*cy;
 	t_vec3		cp;
-	double 		p_height;
+	t_vec3		cq;
+	double 		q_height;
 
 	cy = world->element;
-	cp = vminus(ray_at(ray, root), cy->origin);
 	rec->t = root;
 	rec->p = ray_at(ray, root);
-	p_height = vdot(cp, cy->dir_v);
-	if (p_height < 0 || p_height > cy->height)
+	cp = vminus(rec->p, cy->origin);
+	cq = vmult(cy->dir_v, vdot(cp, cy->dir_v));
+	q_height = vdot(cp, cy->dir_v);
+	if (q_height < 0 || q_height > cy->height)
 		return (FALSE);
-	rec->normal = vunit(vminus(rec->p, vplus(cy->origin, vmult(cy->dir_v, vdot(cp, cy->dir_v)))));
+	rec->normal = vunit(vminus(cp, cq));
 	set_face_normal(ray, rec);
 	rec->albedo = world->albedo;
 	return (TRUE);
