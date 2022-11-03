@@ -48,7 +48,7 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 	cam.horizontal = vmult(cam.u_dir, cam.viewport_w);
 	cam.vertical = vmult(cam.v_dir, cam.viewport_h);
 	cam.unit_left_bottom = vminus(vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
-				vdivide(cam.vertical, 2)), cam.w_dir);
+				vdivide(cam.vertical, 2)), vmult(cam.w_dir, cam.focal_len));
 	return (cam);
 }
 
