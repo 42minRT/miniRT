@@ -32,7 +32,7 @@ t_ray	ray_primary(t_camera *cam, double u, double v)
 	t_vec3	temp;
 
 	ray.origin = cam->origin;
-	temp = vminus(vplus(vplus(cam->left_bottom,\
+	temp = vminus(vplus(vplus(cam->unit_left_bottom,\
 					 	vmult(cam->horizontal, u)),\
 						vmult(cam->vertical, v)),\
 					 	cam->origin);

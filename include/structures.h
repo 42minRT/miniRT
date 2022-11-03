@@ -101,12 +101,15 @@ struct s_ray
 struct s_camera
 {
 	t_point3	origin;
+	t_vec3		u_dir;
+	t_vec3		v_dir;
+	t_vec3		w_dir;
 	double		viewport_h;
 	double		viewport_w;
 	t_vec3		horizontal;
 	t_vec3		vertical;
 	double		focal_len;
-	t_point3	left_bottom;
+	t_point3	unit_left_bottom;
 };
 
 struct	s_canvas
