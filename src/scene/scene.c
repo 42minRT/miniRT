@@ -47,7 +47,7 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 	cam.focal_len = get_focal_len(cam.viewport_w, ft_atoi(elements[2]));
 	cam.horizontal = vmult(cam.u_dir, cam.viewport_w);
 	cam.vertical = vmult(cam.v_dir, cam.viewport_h);
-	cam.unit_left_bottom = vminus(vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
+	cam.left_bottom = vminus(vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
 				vdivide(cam.vertical, 2)), vmult(cam.w_dir, cam.focal_len));
 	return (cam);
 }

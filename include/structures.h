@@ -109,7 +109,7 @@ struct s_camera
 	t_vec3		horizontal;
 	t_vec3		vertical;
 	double		focal_len;
-	t_point3	unit_left_bottom;
+	t_point3	left_bottom;
 };
 
 struct	s_canvas
