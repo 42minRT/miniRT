@@ -82,7 +82,7 @@ typedef struct s_hit_record	t_hit_record;
 // object 구조체
 typedef struct s_object		t_object;
 typedef struct s_sphere		t_sphere;
-typedef struct s_plain		t_plain;
+typedef struct s_plane		t_plane;
 typedef struct s_cylinder	t_cylinder;
 
 struct s_vec3
@@ -171,7 +171,7 @@ struct	s_sphere
 	double		radius2;
 };
 
-struct s_plain
+struct s_plane
 {
 	t_point3	origin;
 	t_vec3		dir_v;
