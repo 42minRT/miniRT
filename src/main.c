@@ -32,8 +32,8 @@ int	main(int argc, char **argv)
 			&img.line_length, &img.endian);
 	draw_image(scene, &img);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
-	mlx_hook(win_ptr, X_EVENT_KEY_PRESS, 0, &handle_key, NULL);
-	mlx_hook(win_ptr, X_EVENT_CLOSE, 0, &close_window, 0);
+	mlx_hook(win_ptr, X_EVENT_KEY_PRESS, 0, (void *)&handle_key, NULL);
+	mlx_hook(win_ptr, X_EVENT_CLOSE, 0, (void *)&close_window, 0);
 	mlx_loop(mlx_ptr);
 	return (0);
 }
