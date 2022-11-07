@@ -21,7 +21,7 @@ typedef enum e_error
 	SYSTEM_ERROR
 }	t_error;
 
-//boolean 값
+//boolean
 typedef enum e_bool
 {
 	FALSE,
@@ -35,9 +35,10 @@ typedef enum e_is_return
 	YES
 }	t_is_return;
 
-//	object_type 정리함. EPSILON 은 int 가 아니라 뺌
+//	object_type
 typedef enum e_object_type
 {
+	NO_OBJECT,
 	A,
 	C,
 	L,
