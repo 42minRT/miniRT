@@ -1,10 +1,12 @@
 {
 	"files.associations": {
+		"*.js": "javascriptreact",
 		"stdlib.h": "c",
 		"parse.h": "c",
 		"unistd.h": "c",
 		"fcntl.h": "c",
 		"scene.h": "c",
-		"structures.h": "c"
+		"structures.h": "c",
+		"utils.h": "c"
 	}
 }
