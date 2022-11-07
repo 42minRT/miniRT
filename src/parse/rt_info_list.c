@@ -70,30 +70,3 @@ void	rt_lstadd_back(t_rt_list **lst, t_rt_list *new)
 		cur = cur->next;
 	cur->next = new;
 }
-
-// 출력용 임시 함수
-void	rt_lstprint(t_rt_list *lst)
-{
-	int	i;
-
-	while (lst)
-	{
-		if (lst->type)
-		{
-			write(1, "type : ", 7);
-			write(1, lst->type, ft_strlen(lst->type));
-			write(1, "  ", 2);
-		}
-		i = 0;
-		if (lst->elements)
-		{
-			while (lst->elements[i])
-			{
-				write(1, "    ", 4);
-				write(1, lst->elements[i], ft_strlen(lst->elements[i]));
-				++i;
-			}
-		}
-		lst = lst->next;
-	}
-}
