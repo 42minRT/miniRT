@@ -41,6 +41,7 @@ static t_object_type	get_type(char *type_str)
 		return (PL);
 	else if (ft_strncmp(type_str, "cy", ft_strlen(type_str)) == 0)
 		return (CY);
+	return (FALSE);
 }
 
 t_rt_list	*new_rt_lst(char **content)
