@@ -20,5 +20,6 @@ t_light		*new_light(t_point3 light_origin,
 				double bright_ratio, t_color3 light_color);
 t_light		*get_new_light(char **elements);
 t_object	*get_new_object_in_list(t_rt_list *rt_list);
+double		get_focal_len(double viewport_w, int fov);
 
 #endif
