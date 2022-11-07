@@ -4,7 +4,6 @@ t_is_return	is_xyz_coordinate(char *str)
 {
 	int		i;
 	int		xyz_elements_len;
-	int		ret;
 	char	**xyz_elements;
 
 	i = 0;

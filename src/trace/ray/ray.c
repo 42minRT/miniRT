@@ -43,8 +43,6 @@ t_color3	ray_color(t_scene *scene)
 	double			t;
 	t_color3		white;
 	t_color3		sky_blue;
-	t_color3		red;
-	t_vec3			n;
 
 	white = color3(1.0, 1.0, 1.0);
 	sky_blue = color3(0.5, 0.7, 1.0);

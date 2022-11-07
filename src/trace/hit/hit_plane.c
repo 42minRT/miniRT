@@ -4,7 +4,6 @@
 
 t_bool	hit_plane(t_object *world, t_ray *ray, t_hit_record *rec)
 {
-	t_vec3		co;
 	double		a;
 	double		b;
 	double		t;

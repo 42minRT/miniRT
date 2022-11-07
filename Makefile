@@ -1,6 +1,6 @@
 NAME = miniRT
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft
 LIBFT_LIB = libft.a
