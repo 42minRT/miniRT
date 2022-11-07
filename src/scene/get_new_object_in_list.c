@@ -22,7 +22,7 @@ t_object *get_new_object_in_list(t_rt_list *rt_list)
 	}
 	else if (rt_list->type == PL)
 	{
-		element = new_plain(parse_vec3(elements[0]), parse_vec3(elements[1]));
+		element = new_plane(parse_vec3(elements[0]), parse_vec3(elements[1]));
 		object = new_object(PL, element, parse_rgb(elements[2]));
 	}
 	return (object);

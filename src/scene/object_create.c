@@ -27,11 +27,11 @@ t_sphere	*new_sphere(t_point3 center, double radius)
 	return (sp);
 }
 
-t_plain	*new_plain(t_point3 origin, t_vec3 dir_v)
+t_plane	*new_plane(t_point3 origin, t_vec3 dir_v)
 {
-	t_plain	*pl;
+	t_plane	*pl;
 
-	pl = malloc(sizeof(t_plain));
+	pl = malloc(sizeof(t_plane));
 	if (pl == NULL)
 		return (NULL);
 	pl->origin = origin;
