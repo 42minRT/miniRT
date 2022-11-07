@@ -18,7 +18,7 @@ t_is_return	is_xyz_coordinate(char *str)
 			return (free_return(xyz_elements, NO));
 		++i;
 	}
-	return (free_return(xyz_elements, YES));	
+	return (free_return(xyz_elements, YES));
 }
 
 t_is_return	is_rgb(char *str)

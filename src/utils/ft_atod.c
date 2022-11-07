@@ -1,4 +1,3 @@
-
 #include "../../include/libft.h"
 
 static int	ft_isspace(const char str)
@@ -22,7 +21,7 @@ static void	skip_space_plus_minus(char *str, size_t *i, double *flag)
 	}
 }
 
-static void parse_ft_atod(double *result, char *str, \
+static void	parse_ft_atod(double *result, char *str, \
 					size_t *i, int *point_flag, double *flag)
 {
 	while (str[*i] && (ft_isdigit(str[*i]) || str[*i] == '.'))
@@ -35,7 +34,7 @@ static void parse_ft_atod(double *result, char *str, \
 			if (*point_flag > 1)
 				return ;
 		}
-		else 
+		else
 			(*result) = (*result) * 10.0 + (str[*i] - '0');
 		(*i)++;
 	}

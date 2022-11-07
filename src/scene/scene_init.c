@@ -7,7 +7,7 @@ t_object	*init_world(t_rt_list *file)
 {
 	t_object	*world;
 	t_rt_list	*file_idx;
-	t_object 	*world_object;
+	t_object	*world_object;
 
 	world = NULL;
 	file_idx = file;
@@ -35,6 +35,5 @@ t_scene	*init_scene(t_rt_list *file)
 	scene->camera = set_camera(&scene->canvas, get_elements_by_type(file, C));
 	scene->light = get_new_light(get_elements_by_type(file, L));
 	scene->world = init_world(file);
-
 	return (scene);
 }

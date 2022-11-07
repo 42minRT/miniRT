@@ -12,7 +12,7 @@ t_bool	hit_sphere(t_object *world, t_ray *ray, t_hit_record *rec)
 	double		sqrtd;
 	double		root;
 	t_sphere	*sp;
-	
+
 	sp = world->element;
 	co = vminus(ray->origin, sp->center);
 	a = vdot(ray->dir, ray->dir);

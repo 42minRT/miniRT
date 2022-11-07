@@ -46,7 +46,6 @@ typedef enum e_object_type
 	CY,
 }	t_object_type;
 
-
 typedef struct s_rt_list	t_rt_list;
 struct s_rt_list
 {

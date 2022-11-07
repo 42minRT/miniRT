@@ -2,8 +2,8 @@
 
 t_is_return	is_rt_file(char *file_name)
 {
-	int		len;
-	char	*file_ext;
+	int			len;
+	char		*file_ext;
 	t_is_return	match;
 
 	match = NO;

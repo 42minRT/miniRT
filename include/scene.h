@@ -14,7 +14,8 @@ t_sphere	*new_sphere(t_point3 center, double radius);
 t_object	*new_object(t_object_type type, void *element, t_color3 albedo);
 t_sphere	*new_sphere(t_point3 center, double radius);
 t_plane		*new_plane(t_point3 origin, t_vec3 dir_v);
-t_cylinder	*new_cylinder(t_point3 origin, t_vec3 dir_v, double dia, double height);
+t_cylinder	*new_cylinder(
+				t_point3 origin, t_vec3 dir_v, double dia, double height);
 t_light		*new_light(t_point3 light_origin,
 				double bright_ratio, t_color3 light_color);
 t_light		*get_new_light(char **elements);

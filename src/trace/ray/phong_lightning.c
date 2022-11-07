@@ -2,7 +2,7 @@
 
 t_vec3	reflect(t_vec3 v, t_vec3 n)
 {
-	t_vec3 ret_vec;
+	t_vec3	ret_vec;
 
 	ret_vec = vminus(v, vmult(n, 2 * vdot(v, n)));
 	return (ret_vec);
@@ -36,7 +36,8 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 
 	light_dir = vminus(light->origin, scene->rec.p);
 	light_len = vlength(light_dir);
-	light_ray = ray(vplus(scene->rec.p, vmult(scene->rec.normal, EPSILON)), light_dir);
+	light_ray = ray(vplus(scene->rec.p, vmult(scene->rec.normal, EPSILON)),
+			light_dir);
 	if (in_shadow(scene->world, light_ray, light_len))
 		return (color3(0, 0, 0));
 	light_dir = vunit(light_dir);
@@ -55,7 +56,7 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 t_color3	phong_lighting(t_scene *scene)
 {
 	t_color3	light_color;
-	t_light	*lights;
+	t_light		*lights;
 
 	light_color = color3(0, 0, 0);
 	lights = scene->light;
