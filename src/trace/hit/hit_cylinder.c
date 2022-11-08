@@ -27,30 +27,24 @@ t_bool	check_cylinder(
 t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 {
 	t_vec3		co;
-	double		a;
-	double		half_b;
-	double		c;
-	double		discriminant;
-	double		sqrtd;
+	t_quadratic	equation;
 	double		root;
 	t_cylinder	*cy;
 
 	cy = world->element;
 	co = vminus(ray->origin, cy->origin);
-	a = pow(vdot(ray->dir, cy->dir_v), 2) - 1;
-	half_b = vdot(ray->dir, cy->dir_v) * vdot(co, cy->dir_v)
-		- vdot(co, ray->dir);
-	c = pow(cy->diameter, 2) - vdot(co, co) + pow(vdot(co, cy->dir_v), 2);
-	discriminant = half_b * half_b - a * c;
-	if (discriminant < 0)
+	equation.a = pow(vdot(ray->dir, cy->dir_v), 2) - 1;
+	equation.half_b = vdot(ray->dir, cy->dir_v) * vdot(co, cy->dir_v) - vdot(co, ray->dir);
+	equation.c = pow(cy->diameter, 2) - vdot(co, co) + pow(vdot(co, cy->dir_v), 2);
+	equation.discriminant = equation.half_b * equation.half_b - equation.a * equation.c;
+	if (equation.discriminant < 0)
 		return (FALSE);
-	sqrtd = sqrt(discriminant);
-	root = (-half_b + sqrtd) / a;
+	root = (-equation.half_b + sqrt(equation.discriminant)) / equation.a;
 	if (root < rec->tmin || root > rec->tmax)
 		return (FALSE);
 	if (check_cylinder(world, ray, rec, root) == TRUE)
 		return (TRUE);
-	root = (-half_b - sqrtd) / a;
+	root = (-equation.half_b - sqrt(equation.discriminant)) / equation.a;
 	if (check_cylinder(world, ray, rec, root) == TRUE)
 		return (TRUE);
 	return (FALSE);

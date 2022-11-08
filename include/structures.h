@@ -187,4 +187,15 @@ struct s_cylinder
 	double		height;
 };
 
+// quadratic 
+typedef struct s_quadratic t_quadratic;
+
+struct s_quadratic
+{
+	double	a;
+	double	half_b;
+	double	c;
+	double	discriminant;
+};
+
 #endif
