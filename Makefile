@@ -1,19 +1,34 @@
-NAME = miniRT
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+NAME		=	miniRT
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -f
 
-LIBFT = libft
-LIBFT_LIB = libft.a
+LIBFT		=	libft
+LIBFT_LIB	=	./libft/libft.a
+MLX			=	mlx
+MLX_LIB		=	./mlx/libmlx.a
 
-MLX = mlx
-MLX_A = libmlx.a
+HEADER		=	./include/
+SRC_DIR		=	./src/
+SRC_LIST	=	main.c \
+				parse/is_valid/is_rt_file.c parse/is_valid/is_valid_elements_light.c \
+				parse/is_valid/is_valid_elements_object.c parse/is_valid/is_valid_elements_utils_base.c \
+				parse/is_valid/is_valid_elements_utils.c parse/is_valid/parse_elements.c \
+				parse/get_next_line.c parse/get_next_line_utils.c parse/parse_file.c parse/rt_info_list.c \
+				print/print_error.c \
+				scene/canvas.c scene/get_new_object_in_list.c scene/object_create.c \
+				scene/scene_init.c scene/scene_utils.c scene/scene.c \
+				set_color/set_basic_color.c set_color/set_color.c \
+				trace/hit/hit.c trace/hit/normal.c trace/hit/hit_sphere.c trace/hit/hit_plane.c trace/hit/hit_cylinder.c \
+				trace/ray/ray.c trace/ray/phong_lighting.c \
+				utils/free_return.c utils/ft_atod.c utils/object_utils.c utils/parse_elements.c \
+				utils/split_count_utils.c utils/vector_mount_utils.c utils/vector_mult_divide_utils.c \
+				utils/vector_plus_minus_utils.c utils/vector_unit_utils.c utils/vector_utils.c \
+				window/draw_pixel.c window/handle_key.c
+SRCS		=	$(addprefix $(SRC_DIR), $(SRC_LIST))
+OBJS		=	${SRCS:.c=.o}
 
-SL_SRCS = $(wildcard src/*.c) $(wildcard src/**/*.c) $(wildcard src/**/**/*.c)
-SL_OBJS = ${SL_SRCS:.c=.o}
-
-OBJS = $(SL_OBJS)
-
-detected_OS := $(shell uname)
+detected_OS	:=	$(shell uname)
 
 ifeq ($(detected_OS), Linux)
 MLX_LIB = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
@@ -23,26 +38,22 @@ endif
 
 all : $(NAME)
 
-$(NAME): $(SL_OBJS) $(GNL_OBJS) 
+$(NAME): $(OBJS)
 	make bonus -C $(LIBFT)
-	cp $(LIBFT)/$(LIBFT_LIB) ./
 	make -C $(MLX)
-	cp $(MLX)/$(MLX_A) ./
-	$(CC) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
+	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $@
 
 clean :
-	rm -rf $(OBJS) $(LIBFT_LIB) $(MLX_A)
-
-fclean : clean
-	rm -rf $(NAME)
+	$(RM) $(OBJS)
 	make clean -C $(MLX)
 	make clean -C $(LIBFT)
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
+fclean : clean
+	$(RM) $(NAME) $(LIBFT_LIB) $(MLX_LIB)
+
+re: fclean all
 
 %.o: %.c
-	$(CC) ${CFLAGS} ${DFLAGS} -c $< -o $@
+	$(CC) ${CFLAGS} -c $< -o $@
 
-.PHONY : all clean fclean
+.PHONY : all clean fclean re
