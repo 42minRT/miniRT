@@ -1,4 +1,4 @@
-int		count_elements(char **elements)
+int	count_elements(char **elements)
 {
 	int	cnt;
 

@@ -39,7 +39,8 @@ t_plane	*new_plane(t_point3 origin, t_vec3 dir_v)
 	return (pl);
 }
 
-t_cylinder	*new_cylinder(t_point3 origin, t_vec3 dir_v, double dia, double height)
+t_cylinder	*new_cylinder(
+		t_point3 origin, t_vec3 dir_v, double dia, double height)
 {
 	t_cylinder	*cy;
 
@@ -53,7 +54,8 @@ t_cylinder	*new_cylinder(t_point3 origin, t_vec3 dir_v, double dia, double heigh
 	return (cy);
 }
 
-t_light	*new_light(t_point3 light_origin, double bright_ratio, t_color3 light_color)
+t_light	*new_light(
+		t_point3 light_origin, double bright_ratio, t_color3 light_color)
 {
 	t_light	*light;
 
@@ -65,4 +67,3 @@ t_light	*new_light(t_point3 light_origin, double bright_ratio, t_color3 light_co
 	light->bright_ratio = bright_ratio;
 	return (light);
 }
-

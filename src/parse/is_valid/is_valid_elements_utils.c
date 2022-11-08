@@ -4,7 +4,6 @@ t_is_return	is_xyz_coordinate(char *str)
 {
 	int		i;
 	int		xyz_elements_len;
-	int		ret;
 	char	**xyz_elements;
 
 	i = 0;
@@ -18,7 +17,7 @@ t_is_return	is_xyz_coordinate(char *str)
 			return (free_return(xyz_elements, NO));
 		++i;
 	}
-	return (free_return(xyz_elements, YES));	
+	return (free_return(xyz_elements, YES));
 }
 
 t_is_return	is_rgb(char *str)

@@ -21,23 +21,24 @@ typedef enum e_error
 	SYSTEM_ERROR
 }	t_error;
 
-//boolean 값
+//boolean
 typedef enum e_bool
 {
 	FALSE,
 	TRUE
 }	t_bool;
 
-// is 함수의 return 값을 yes, no 로 받으세요
+// yes, no∫
 typedef enum e_is_return
 {
 	NO,
 	YES
 }	t_is_return;
 
-//	object_type 정리함. EPSILON 은 int 가 아니라 뺌
+//	object_type
 typedef enum e_object_type
 {
+	NO_OBJECT,
 	A,
 	C,
 	L,
@@ -45,7 +46,6 @@ typedef enum e_object_type
 	PL,
 	CY,
 }	t_object_type;
-
 
 typedef struct s_rt_list	t_rt_list;
 struct s_rt_list
@@ -63,23 +63,26 @@ struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	void	*mlx_ptr;
+	void	*win_ptr;
 };
 
 typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_point3;
 typedef struct s_vec3		t_color3;
 
-// ray 구조체
+// ray
 typedef struct s_ray		t_ray;
 
-// scene 구조체
+// scene
 typedef struct s_scene		t_scene;
 typedef struct s_canvas		t_canvas;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 typedef struct s_hit_record	t_hit_record;
+typedef struct s_p_light	t_p_light;
 
-// object 구조체
+// object
 typedef struct s_object		t_object;
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
@@ -144,6 +147,22 @@ struct s_light
 	double		bright_ratio;
 };
 
+struct s_p_light
+{
+	t_color3	diffuse;
+	t_vec3		light_dir;
+	double		light_len;
+	t_ray		light_ray;
+	double		kd;
+	t_color3	specular;
+	t_vec3		view_dir;
+	t_vec3		reflect_dir;
+	double		spec;
+	double		ksn;
+	double		ks;
+	double		brightness;
+};
+
 struct s_scene
 {
 	t_canvas		canvas;
@@ -155,7 +174,6 @@ struct s_scene
 	t_hit_record	rec;
 };
 
-// object 구조체
 struct	s_object
 {
 	t_object_type	type;
@@ -183,6 +201,27 @@ struct s_cylinder
 	t_vec3		dir_v;
 	double		diameter;
 	double		height;
+};
+
+// quadratic 
+typedef struct s_quadratic	t_quadratic;
+struct s_quadratic
+{
+	double	a;
+	double	half_b;
+	double	c;
+	double	discriminant;
+};
+
+// ft_atod
+typedef struct s_atod		t_atod;
+struct s_atod
+{
+	size_t		i;
+	double		result;
+	double		flag;
+	int			point_flag;
+	char		*str;
 };
 
 #endif
