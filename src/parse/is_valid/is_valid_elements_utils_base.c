@@ -65,7 +65,7 @@ t_is_return	is_vector_element(char *str)
 {
 	if (is_valid_double_format(str) == NO)
 		return (NO);
-	if (is_between(0.0, 1.0, ft_atod(str)) == YES)
+	if (is_between(-1.0, 1.0, ft_atod(str)) == YES)
 		return (YES);
 	return (NO);
 }
