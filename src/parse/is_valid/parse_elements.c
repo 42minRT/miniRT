@@ -55,6 +55,8 @@ t_is_return	parse_elements(char *line, t_rt_list **file)
 	t_rt_list *new;
 
 	elements = ft_split(line, ' ');
+	if (ft_strncmp(elements[0], "#", 1) == 0)
+		return (free_return(elements, YES));
 	if (count_elements(elements) == 1 && ft_strncmp(elements[0], "\n", 1) == 0)
 		return (free_return(elements, YES));
 	type = elements[0];
