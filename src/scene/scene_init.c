@@ -30,7 +30,7 @@ t_scene	*init_scene(t_rt_list *file)
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
-	scene->canvas = set_canvas(800, 600);
+	scene->canvas = set_canvas(SCENE_WIDTH, SCENE_HEIGHT);
 	scene->ambient = set_ambient(get_elements_by_type(file, A));
 	scene->camera = set_camera(&scene->canvas, get_elements_by_type(file, C));
 	scene->light = get_new_light(get_elements_by_type(file, L));

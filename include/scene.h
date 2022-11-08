@@ -5,7 +5,8 @@
 # include "vector_utils.h"
 
 # define _USE_MATH_DEFINES
-
+# define SCENE_WIDTH 1000
+# define SCENE_HEIGHT 800
 t_scene		*init_scene(t_rt_list *file);
 t_canvas	set_canvas(int width, int height);
 t_camera	set_camera(t_canvas *canvas, char **elements);
