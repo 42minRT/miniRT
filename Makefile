@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/08 19:50:51 by sumsong           #+#    #+#              #
+#    Updated: 2022/11/08 19:51:22 by sumsong          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		=	miniRT
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -19,7 +31,8 @@ SRC_LIST	=	main.c \
 				scene/canvas.c scene/get_new_object_in_list.c scene/object_create.c \
 				scene/scene_init.c scene/scene_utils.c scene/scene.c \
 				set_color/set_basic_color.c set_color/set_color.c \
-				trace/hit/hit.c trace/hit/normal.c trace/hit/hit_sphere.c trace/hit/hit_plane.c trace/hit/hit_cylinder.c \
+				trace/hit/hit.c trace/hit/normal.c trace/hit/hit_sphere.c \
+				trace/hit/hit_plane.c trace/hit/hit_cylinder.c \
 				trace/ray/ray.c trace/ray/phong_lighting.c \
 				utils/free_return.c utils/ft_atod.c utils/object_utils.c utils/parse_elements.c \
 				utils/split_count_utils.c utils/vector_mount_utils.c utils/vector_mult_divide_utils.c \
