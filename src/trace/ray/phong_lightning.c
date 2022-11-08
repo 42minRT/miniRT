@@ -21,7 +21,7 @@ t_bool	in_shadow(t_object *world, t_ray light_ray, double light_len)
 
 t_color3	point_light_get(t_scene *scene, t_light *light)
 {
-	t_phong_light	phong_light;
+	t_p_light	phong_light;
 
 	phong_light.light_dir = vminus(light->origin, scene->rec.p);
 	phong_light.light_len = vlength(phong_light.light_dir);

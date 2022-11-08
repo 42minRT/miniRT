@@ -28,7 +28,7 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
-// yes, no
+// yes, no∫
 typedef enum e_is_return
 {
 	NO,
@@ -75,12 +75,12 @@ typedef struct s_vec3		t_color3;
 typedef struct s_ray		t_ray;
 
 // scene
-typedef struct s_scene			t_scene;
-typedef struct s_canvas			t_canvas;
-typedef struct s_camera			t_camera;
-typedef struct s_light			t_light;
-typedef struct s_hit_record		t_hit_record;
-typedef struct s_phong_light 	t_phong_light;
+typedef struct s_scene		t_scene;
+typedef struct s_canvas		t_canvas;
+typedef struct s_camera		t_camera;
+typedef struct s_light		t_light;
+typedef struct s_hit_record	t_hit_record;
+typedef struct s_p_light	t_p_light;
 
 // object
 typedef struct s_object		t_object;
@@ -147,7 +147,7 @@ struct s_light
 	double		bright_ratio;
 };
 
-struct s_phong_light
+struct s_p_light
 {
 	t_color3	diffuse;
 	t_vec3		light_dir;
@@ -162,7 +162,6 @@ struct s_phong_light
 	double		ks;
 	double		brightness;
 };
-
 
 struct s_scene
 {
@@ -205,14 +204,24 @@ struct s_cylinder
 };
 
 // quadratic 
-typedef struct s_quadratic t_quadratic;
-
+typedef struct s_quadratic	t_quadratic;
 struct s_quadratic
 {
 	double	a;
 	double	half_b;
 	double	c;
 	double	discriminant;
+};
+
+// ft_atod
+typedef struct s_atod		t_atod;
+struct s_atod
+{
+	size_t		i;
+	double		result;
+	double		flag;
+	int			point_flag;
+	char		*str;
 };
 
 #endif
