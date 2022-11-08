@@ -63,6 +63,8 @@ struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	void	*mlx_ptr;
+	void	*win_ptr;
 };
 
 typedef struct s_vec3		t_vec3;
