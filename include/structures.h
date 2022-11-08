@@ -28,7 +28,7 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
-// is 함수의 return 값을 yes, no 로 받으세요
+// yes, no
 typedef enum e_is_return
 {
 	NO,
@@ -69,17 +69,17 @@ typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_point3;
 typedef struct s_vec3		t_color3;
 
-// ray 구조체
+// ray
 typedef struct s_ray		t_ray;
 
-// scene 구조체
+// scene
 typedef struct s_scene		t_scene;
 typedef struct s_canvas		t_canvas;
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
 typedef struct s_hit_record	t_hit_record;
 
-// object 구조체
+// object
 typedef struct s_object		t_object;
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
