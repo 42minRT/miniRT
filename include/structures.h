@@ -75,11 +75,12 @@ typedef struct s_vec3		t_color3;
 typedef struct s_ray		t_ray;
 
 // scene
-typedef struct s_scene		t_scene;
-typedef struct s_canvas		t_canvas;
-typedef struct s_camera		t_camera;
-typedef struct s_light		t_light;
-typedef struct s_hit_record	t_hit_record;
+typedef struct s_scene			t_scene;
+typedef struct s_canvas			t_canvas;
+typedef struct s_camera			t_camera;
+typedef struct s_light			t_light;
+typedef struct s_hit_record		t_hit_record;
+typedef struct s_phong_light 	t_phong_light;
 
 // object
 typedef struct s_object		t_object;
@@ -146,6 +147,23 @@ struct s_light
 	double		bright_ratio;
 };
 
+struct s_phong_light
+{
+	t_color3	diffuse;
+	t_vec3		light_dir;
+	double		light_len;
+	t_ray		light_ray;
+	double		kd;
+	t_color3	specular;
+	t_vec3		view_dir;
+	t_vec3		reflect_dir;
+	double		spec;
+	double		ksn;
+	double		ks;
+	double		brightness;
+};
+
+
 struct s_scene
 {
 	t_canvas		canvas;
@@ -157,7 +175,6 @@ struct s_scene
 	t_hit_record	rec;
 };
 
-// object 구조체
 struct	s_object
 {
 	t_object_type	type;
