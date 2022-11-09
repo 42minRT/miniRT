@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img, 0, 0);
 	mlx_hook(img.win_ptr, X_EVENT_KEY_PRESS, 0, (void *)&handle_key, NULL);
 	mlx_hook(img.win_ptr, X_EVENT_CLOSE, 0, (void *)&close_window, 0);
+//	mlx_key_hook(img.win_ptr, key_press, (void *) scene);
 	mlx_loop(img.mlx_ptr);
 	return (0);
 }
