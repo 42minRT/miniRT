@@ -9,4 +9,7 @@ enum e_keycode {
 	KEY_D = 2,
 };
 
+# define X_EVENT_KEY_PRESS 2
+# define X_EVENT_CLOSE 17
+
 #endif

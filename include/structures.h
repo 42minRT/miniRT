@@ -2,11 +2,7 @@
 # define STRUCTURES_H
 
 # include "libft.h"
-
-// mlx event key
-# define X_EVENT_KEY_PRESS 2
-# define X_EVENT_CLOSE 17
-
+# include "key_code.h"
 # define EPSILON 1e-6
 # define LUMEN 3
 
