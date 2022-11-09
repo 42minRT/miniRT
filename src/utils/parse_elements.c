@@ -4,7 +4,7 @@
 
 char	**get_elements_by_type(t_rt_list *file, t_object_type type)
 {
-	while (file->next)
+	while (file)
 	{
 		if (file->type == type)
 			return (file->elements);
