@@ -43,7 +43,7 @@ t_is_return	is_valid_pl_element(char **elements)
 	return (YES);
 }
 
-t_is_return is_valid_cy_element(char **elements)
+t_is_return	is_valid_cy_element(char **elements)
 {
 	char	*last_element;
 

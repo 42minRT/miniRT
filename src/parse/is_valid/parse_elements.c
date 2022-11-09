@@ -49,10 +49,9 @@ static t_is_return	is_valid_elements_with_no_newline(char **elements)
 
 t_is_return	parse_elements(char *line, t_rt_list **file)
 {
-	char	**elements;
-	char	*type;
-	int		i;
-	t_rt_list *new;
+	char		**elements;
+	char		*type;
+	t_rt_list	*new;
 
 	elements = ft_split(line, ' ');
 	if (ft_strncmp(elements[0], "#", 1) == 0)

@@ -41,6 +41,7 @@ static t_object_type	get_type(char *type_str)
 		return (PL);
 	else if (ft_strncmp(type_str, "cy", ft_strlen(type_str)) == 0)
 		return (CY);
+	return (NO_OBJECT);
 }
 
 t_rt_list	*new_rt_lst(char **content)
@@ -69,31 +70,4 @@ void	rt_lstadd_back(t_rt_list **lst, t_rt_list *new)
 	while (cur->next != NULL)
 		cur = cur->next;
 	cur->next = new;
-}
-
-// 출력용 임시 함수
-void	rt_lstprint(t_rt_list *lst)
-{
-	int	i;
-
-	while (lst)
-	{
-		if (lst->type)
-		{
-			write(1, "type : ", 7);
-			write(1, lst->type, ft_strlen(lst->type));
-			write(1, "  ", 2);
-		}
-		i = 0;
-		if (lst->elements)
-		{
-			while (lst->elements[i])
-			{
-				write(1, "    ", 4);
-				write(1, lst->elements[i], ft_strlen(lst->elements[i]));
-				++i;
-			}
-		}
-		lst = lst->next;
-	}
 }

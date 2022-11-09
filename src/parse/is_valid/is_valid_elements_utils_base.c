@@ -25,7 +25,8 @@ t_is_return	is_valid_double_format(char *to_double_str)
 	return (YES);
 }
 
-t_is_return is_between(double conditional_num1, double conditional_num2, double num)
+t_is_return	is_between(
+		double conditional_num1, double conditional_num2, double num)
 {
 	double	min;
 	double	max;
@@ -45,7 +46,7 @@ t_is_return is_between(double conditional_num1, double conditional_num2, double 
 	return (NO);
 }
 
-t_is_return is_xyz_element(char *str)
+t_is_return	is_xyz_element(char *str)
 {
 	if (is_valid_double_format(str) == NO)
 		return (NO);
