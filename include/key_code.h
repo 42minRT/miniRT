@@ -1,5 +1,5 @@
 #ifndef KEY_CODE_H
- #define KEY_CODE_H
+#define KEY_CODE_H
 
 enum e_keycode {
 	KEY_ESC = 53,
@@ -9,5 +9,4 @@ enum e_keycode {
 	KEY_D = 2,
 };
 
-int	key_press(int key_code);
 #endif
