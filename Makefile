@@ -1,6 +1,7 @@
 NAME = miniRT
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+DFLAGS = -g3
 
 LIBFT = libft
 LIBFT_LIB = libft.a
@@ -43,6 +44,13 @@ re:
 	$(MAKE) all
 
 %.o: %.c
-	$(CC) ${CFLAGS} ${DFLAGS} -c $< -o $@
+	$(CC) ${CFLAGS} -c $< -o $@
+
+debug:
+	make bonus -C $(LIBFT)
+	cp $(LIBFT)/$(LIBFT_LIB) ./
+	make -C $(MLX)
+	cp $(MLX)/$(MLX_A) ./	
+	$(CC) $(wildcard src/*.c) $(wildcard src/**/*.c) $(wildcard src/**/**/*.c) $(LIBFT_LIB) $(MLX_LIB) $(DFLAGS) -o debug.out
 
 .PHONY : all clean fclean
