@@ -53,18 +53,14 @@ void	handle_key(int keycode, void *arg)
 	scene = (t_scene *)arg;
 	if (keycode == KEY_ESC)
 		close_window(EXIT_SUCCESS);
-	else if (keycode == KEY_Q)
-		plus_camera_direction(scene, vec3(1, 0, 0));
 	else if (keycode == KEY_W)
-		plus_camera_direction(scene, vec3(0, 1, 0));
-	else if (keycode == KEY_E)
-		plus_camera_direction(scene, vec3(0, 0, 1));
+		plus_camera_direction(scene, vmult(scene->camera.v_dir, -1));
 	else if (keycode == KEY_A)
-		plus_camera_direction(scene, vec3(-1, 0, 0));
+		plus_camera_direction(scene, scene->camera.u_dir);
 	else if (keycode == KEY_S)
-		plus_camera_direction(scene, vec3(0, -1, 0));
+		plus_camera_direction(scene, scene->camera.v_dir);
 	else if (keycode == KEY_D)
-		plus_camera_direction(scene, vec3(0, 0, -1));
+		plus_camera_direction(scene, vmult(scene->camera.u_dir, -1));
 	else if (keycode == KEY_RIGHT || keycode == KEY_LEFT || keycode == KEY_UP ||
 		keycode == KEY_DOWN || keycode == KEY_O || keycode == KEY_I)
 		plus_camera_coordination(scene, keycode);
