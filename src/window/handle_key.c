@@ -5,16 +5,14 @@
 #include "../../mlx/mlx.h"
 #include "../../include/vector_utils.h"
 
+// set cam diretion to (origin cam dircetion + axis * step)
 static void	plus_camera_direction(t_scene *scene, t_vec3 axis)
 {
-	t_camera	cam;
-	double		step;
-	t_vec3		temp;
+	t_camera		cam;
+	const double	step = 0.042;
 
-	step = 0.042;
 	cam = scene->camera;
-	temp = vplus(vmult(axis, step), cam.w_dir);
-	cam.w_dir = vunit(temp);
+	cam.w_dir = vunit(vplus(vmult(axis, step), cam.w_dir));
 	set_cam_coordination(&cam.u_dir, &cam.v_dir, &cam.w_dir);
 	cam.horizontal = vmult(cam.u_dir, cam.viewport_w);
 	cam.vertical = vmult(cam.v_dir, cam.viewport_h);
@@ -46,6 +44,24 @@ void	handle_key(int keycode, void *arg)
 	if (keycode == KEY_E)
 	{
 		plus_camera_direction(scene, vec3(0, 0, 1));
+		draw_image(scene);
+		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
+	}
+	if (keycode == KEY_A)
+	{
+		plus_camera_direction(scene, vec3(-1, 0, 0));
+		draw_image(scene);
+		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
+	}
+	if (keycode == KEY_S)
+	{
+		plus_camera_direction(scene, vec3(0, -1, 0));
+		draw_image(scene);
+		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
+	}
+	if (keycode == KEY_D)
+	{
+		plus_camera_direction(scene, vec3(0, 0, -1));
 		draw_image(scene);
 		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
 	}
