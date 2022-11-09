@@ -34,6 +34,4 @@ enum e_keycode {
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_CLOSE 17
 
-# define STEP 0.42
-
 #endif
