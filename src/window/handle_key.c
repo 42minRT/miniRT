@@ -29,42 +29,20 @@ void	handle_key(int keycode, void *arg)
 	scene = (t_scene *)arg;
 	if (keycode == KEY_ESC)
 		close_window(EXIT_SUCCESS);
-	if (keycode == KEY_Q)
-	{
+	else if (keycode == KEY_Q)
 		plus_camera_direction(scene, vec3(1, 0, 0));
-		draw_image(scene);
-		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
-	}
-	if (keycode == KEY_W)
-	{
+	else if (keycode == KEY_W)
 		plus_camera_direction(scene, vec3(0, 1, 0));
-		draw_image(scene);
-		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
-	}
-	if (keycode == KEY_E)
-	{
+	else if (keycode == KEY_E)
 		plus_camera_direction(scene, vec3(0, 0, 1));
-		draw_image(scene);
-		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
-	}
-	if (keycode == KEY_A)
-	{
+	else if (keycode == KEY_A)
 		plus_camera_direction(scene, vec3(-1, 0, 0));
-		draw_image(scene);
-		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
-	}
-	if (keycode == KEY_S)
-	{
+	else if (keycode == KEY_S)
 		plus_camera_direction(scene, vec3(0, -1, 0));
-		draw_image(scene);
-		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
-	}
-	if (keycode == KEY_D)
-	{
+	else if (keycode == KEY_D)
 		plus_camera_direction(scene, vec3(0, 0, -1));
-		draw_image(scene);
-		mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
-	}
+	draw_image(scene);
+	mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
 }
 
 void	close_window(int status)
