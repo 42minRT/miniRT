@@ -22,6 +22,39 @@ static void	plus_camera_direction(t_scene *scene, t_vec3 axis)
 	scene->camera = cam;
 }
 
+static void plus_camera_coordination(t_scene *scene, t_keycode key)
+{
+	t_camera	cam;
+	const double step = 0.42;
+
+	cam = scene->camera;
+	if (key == KEY_RIGHT) {
+		cam.origin = vplus(cam.origin, vmult(cam.u_dir, step));
+		cam.left_bottom = vplus(cam.left_bottom, vmult(cam.u_dir, step));
+	}
+	else if (key == KEY_LEFT) {
+		cam.origin = vplus(cam.origin, vmult(cam.u_dir, step * (-1)));
+		cam.left_bottom = vplus(cam.left_bottom, vmult(cam.u_dir, step * (-1)));
+	}
+	else if (key == KEY_UP) {
+		cam.origin = vplus(cam.origin, vmult(cam.v_dir, step));
+		cam.left_bottom = vplus(cam.left_bottom, vmult(cam.v_dir, step));
+	}
+	else if (key == KEY_DOWN) {
+		cam.origin = vplus(cam.origin, vmult(cam.v_dir, step * (-1)));
+		cam.left_bottom = vplus(cam.left_bottom, vmult(cam.v_dir, step * (-1)));
+	}
+	else if (key == KEY_O) {
+		cam.origin = vplus(cam.origin, vmult(cam.w_dir, step));
+		cam.left_bottom = vplus(cam.left_bottom, vmult(cam.w_dir, step));
+	}
+	else if (key == KEY_I) {
+		cam.origin = vplus(cam.origin, vmult(cam.w_dir, step * (-1)));
+		cam.left_bottom = vplus(cam.left_bottom, vmult(cam.w_dir, step * (-1)));
+	}
+	scene->camera = cam;
+}
+
 void	handle_key(int keycode, void *arg)
 {
 	t_scene	*scene;
@@ -41,6 +74,9 @@ void	handle_key(int keycode, void *arg)
 		plus_camera_direction(scene, vec3(0, -1, 0));
 	else if (keycode == KEY_D)
 		plus_camera_direction(scene, vec3(0, 0, -1));
+	else if (keycode == KEY_RIGHT || keycode == KEY_LEFT || keycode == KEY_UP ||
+		keycode == KEY_DOWN || keycode == KEY_O || keycode == KEY_I)
+		plus_camera_coordination(scene, keycode);
 	draw_image(scene);
 	mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
 }

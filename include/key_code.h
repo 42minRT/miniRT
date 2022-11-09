@@ -1,8 +1,12 @@
 #ifndef KEY_CODE_H
 #define KEY_CODE_H
 
-enum e_keycode {
+typedef enum e_keycode {
 	KEY_ESC = 53,
+	KEY_LEFT = 123,
+	KEY_RIGHT = 124,
+	KEY_DOWN = 125,
+	KEY_UP = 126,
 	KEY_A = 0,
 	KEY_B = 11,
 	KEY_C = 8,
@@ -29,7 +33,7 @@ enum e_keycode {
 	KEY_X = 7,
 	KEY_Y = 16,
 	KEY_Z = 6,
-};
+}	t_keycode;
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_CLOSE 17
