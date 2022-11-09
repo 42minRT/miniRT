@@ -167,6 +167,7 @@ struct s_scene
 	t_color3		ambient;
 	t_ray			ray;
 	t_hit_record	rec;
+	t_data			img;
 };
 
 struct	s_object

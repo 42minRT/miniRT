@@ -28,11 +28,11 @@ int	main(int argc, char **argv)
 			img.mlx_ptr, scene->canvas.width, scene->canvas.height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	draw_image(scene, &img);
+	scene->img = img;
+	draw_image(scene);
 	mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img, 0, 0);
-	mlx_hook(img.win_ptr, X_EVENT_KEY_PRESS, 0, (void *)&handle_key, NULL);
+	mlx_hook(img.win_ptr, X_EVENT_KEY_PRESS, 0, (void *)&handle_key, (void *)scene);
 	mlx_hook(img.win_ptr, X_EVENT_CLOSE, 0, (void *)&close_window, 0);
-//	mlx_key_hook(img.win_ptr, key_press, (void *) scene);
 	mlx_loop(img.mlx_ptr);
 	return (0);
 }
