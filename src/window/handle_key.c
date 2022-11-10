@@ -22,11 +22,11 @@ static void	plus_camera_direction(t_scene *scene, t_vec3 axis)
 	scene->camera = cam;
 }
 
-static void plus_camera_coordination(t_scene *scene, t_keycode key)
+static void	plus_camera_coordination(t_scene *scene, t_keycode key)
 {
-	t_camera	cam;
-	t_vec3		plus_vec;
-	const double step = 0.42;
+	t_camera		cam;
+	t_vec3			plus_vec;
+	const double	step = 0.42;
 
 	cam = scene->camera;
 	if (key == KEY_RIGHT)
@@ -61,11 +61,12 @@ void	handle_key(int keycode, void *arg)
 		plus_camera_direction(scene, vmult(scene->camera.v_dir, -1));
 	else if (keycode == KEY_D)
 		plus_camera_direction(scene, scene->camera.u_dir);
-	else if (keycode == KEY_RIGHT || keycode == KEY_LEFT || keycode == KEY_UP ||
-		keycode == KEY_DOWN || keycode == KEY_O || keycode == KEY_I)
+	else if (keycode == KEY_RIGHT || keycode == KEY_LEFT || keycode == KEY_UP
+		|| keycode == KEY_DOWN || keycode == KEY_O || keycode == KEY_I)
 		plus_camera_coordination(scene, keycode);
 	draw_image(scene);
-	mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr, scene->img.img, 0, 0);
+	mlx_put_image_to_window(scene->img.mlx_ptr, scene->img.win_ptr,
+		scene->img.img, 0, 0);
 }
 
 void	close_window(int status)

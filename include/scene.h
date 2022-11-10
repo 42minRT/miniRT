@@ -7,6 +7,7 @@
 # define _USE_MATH_DEFINES
 # define SCENE_WIDTH 1000
 # define SCENE_HEIGHT 800
+
 t_scene		*init_scene(t_rt_list *file);
 t_canvas	set_canvas(int width, int height);
 t_camera	set_camera(t_canvas *canvas, char **elements);
@@ -23,4 +24,5 @@ t_light		*get_new_light(char **elements);
 t_object	*get_new_object_in_list(t_rt_list *rt_list);
 double		get_focal_len(double viewport_w, int fov);
 void		set_cam_coordination(t_vec3 *u, t_vec3 *v, t_vec3 *w);
+
 #endif
