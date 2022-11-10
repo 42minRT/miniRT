@@ -2,12 +2,7 @@
 # define STRUCTURES_H
 
 # include "libft.h"
-
-// mlx event key
-# define X_EVENT_KEY_PRESS 2
-# define X_EVENT_CLOSE 17
-# define KEY_ESC 53
-
+# include "key_code.h"
 # define EPSILON 1e-6
 # define LUMEN 3
 
@@ -172,6 +167,7 @@ struct s_scene
 	t_color3		ambient;
 	t_ray			ray;
 	t_hit_record	rec;
+	t_data			img;
 };
 
 struct	s_object
