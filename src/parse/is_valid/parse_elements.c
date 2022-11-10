@@ -2,23 +2,14 @@
 
 static t_is_return	is_valid_type(char *type)
 {
-	static int	capital_type[3];
-
 	if (ft_strncmp(type, "sp", 3) == 0
 		|| ft_strncmp(type, "pl", 3) == 0
-		|| ft_strncmp(type, "cy", 3) == 0)
+		|| ft_strncmp(type, "cy", 3) == 0
+		|| ft_strncmp(type, "A", 2) == 0
+		|| ft_strncmp(type, "C", 2) == 0
+		|| ft_strncmp(type, "L", 2) == 0)
 		return (YES);
-	if (ft_strncmp(type, "A", 2) == 0)
-		++(capital_type[0]);
-	else if (ft_strncmp(type, "C", 2) == 0)
-		++(capital_type[1]);
-	else if (ft_strncmp(type, "L", 2) == 0)
-		++(capital_type[2]);
-	else
-		return (NO);
-	if (capital_type[0] > 1 || capital_type[1] > 1 || capital_type[2] > 1)
-		return (NO);
-	return (YES);
+	return (NO);
 }
 
 static t_is_return	is_valid_elements_with_no_newline(char **elements)
