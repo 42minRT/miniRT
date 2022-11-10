@@ -28,7 +28,7 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
-// yes, no∫
+// yes, no
 typedef enum e_is_return
 {
 	NO,
