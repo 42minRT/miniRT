@@ -1,5 +1,5 @@
 #ifndef KEY_CODE_H
-#define KEY_CODE_H
+# define KEY_CODE_H
 
 typedef enum e_keycode {
 	KEY_ESC = 53,

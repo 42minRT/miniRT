@@ -1,13 +1,4 @@
-#include "../include/parse.h"
-#include "../include/print.h"
-#include "../include/structures.h"
-#include "../include/vector_utils.h"
-#include "../include/object_utils.h"
-#include "../include/color.h"
-#include "../include/scene.h"
-#include "../include/trace.h"
-#include "../include/window.h"
-#include "../mlx/mlx.h"
+#include "../include/minirt.h"
 
 int	main(int argc, char **argv)
 {
@@ -31,7 +22,8 @@ int	main(int argc, char **argv)
 	scene->img = img;
 	draw_image(scene);
 	mlx_put_image_to_window(img.mlx_ptr, img.win_ptr, img.img, 0, 0);
-	mlx_hook(img.win_ptr, X_EVENT_KEY_PRESS, 0, (void *)&handle_key, (void *)scene);
+	mlx_hook(img.win_ptr, X_EVENT_KEY_PRESS, 0,
+		(void *)&handle_key, (void *)scene);
 	mlx_hook(img.win_ptr, X_EVENT_CLOSE, 0, (void *)&close_window, 0);
 	mlx_loop(img.mlx_ptr);
 	return (0);
