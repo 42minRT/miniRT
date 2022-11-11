@@ -6,13 +6,14 @@
 #    By: jimin <jimin@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 13:22:44 by jimin             #+#    #+#              #
-#    Updated: 2022/11/11 17:20:01 by jimin            ###   ########.fr        #
+#    Updated: 2022/11/11 21:11:45 by jimin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	miniRT
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
+DFLAGS		=	-g3
 RM			=	rm -f
 
 LIBFT		=	libft
@@ -96,12 +97,17 @@ $(NAME): $(OBJS)
 	make -C $(MLX)
 	$(CC) $(CFLAGS) -I $(HEADER_DIR) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $@
 
+debug: $(OBJS)
+	make bonus -C $(LIBFT)
+	make -C $(MLX)
+	$(CC) $(CFLAGS) $(DFLAGS) -I $(HEADER_DIR) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
+
 clean :
 	$(RM) $(OBJS)
-	make clean -C $(MLX)
-	make clean -C $(LIBFT)
 
 fclean : clean
+	make clean -C $(MLX)
+	make clean -C $(LIBFT)
 	$(RM) $(NAME) $(LIBFT_LIB) $(MLX_LIB)
 
 re: fclean all
