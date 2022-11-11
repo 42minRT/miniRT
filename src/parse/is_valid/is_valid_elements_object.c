@@ -48,7 +48,8 @@ t_is_return	is_valid_cy_element(char **elements)
 	char	*last_element;
 
 	last_element = elements[count_elements(elements) - 1];
-	last_element[ft_strlen(last_element) - 1] = '\0';
+	if (last_element[ft_strlen(last_element) - 1] == '\n')
+		last_element[ft_strlen(last_element) - 1] = '\0';
 	if (is_xyz_coordinate(elements[1]) == NO)
 		return (NO);
 	if (is_3d_norm_orient_vecotor(elements[2]) == NO)

@@ -26,7 +26,7 @@ void	draw_pixel(t_data *img, t_color3 pixel_color, int i, int j)
 	my_mlx_pixel_put(img, i, j, trgb);
 }
 
-void	draw_image(t_scene *scene, t_data *img)
+void	draw_image(t_scene *scene)
 {
 	int			i;
 	int			j;
@@ -44,7 +44,7 @@ void	draw_image(t_scene *scene, t_data *img)
 			v = (double)j / (scene->canvas.height - 1);
 			scene->ray = ray_primary(&scene->camera, u, v);
 			pixel_color = ray_color(scene);
-			draw_pixel(img, pixel_color, i, scene->canvas.height - j);
+			draw_pixel(&(scene->img), pixel_color, i, scene->canvas.height - j);
 			++i;
 		}
 		--j;
