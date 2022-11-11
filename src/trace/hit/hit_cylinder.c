@@ -6,7 +6,7 @@
 /*   By: jimin <jimin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:23:07 by jimin             #+#    #+#             */
-/*   Updated: 2022/11/11 13:24:10 by jimin            ###   ########.fr       */
+/*   Updated: 2022/11/11 20:05:30 by jimin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	root = (-equa.half_b + sqrt(equa.discriminant)) / equa.a;
 	if (root < rec->tmin || root > rec->tmax)
-		return (FALSE);
-	if (check_cylinder(world, ray, rec, root) == TRUE)
-		return (TRUE);
-	root = (-equa.half_b - sqrt(equa.discriminant)) / equa.a;
-	if (check_cylinder(world, ray, rec, root) == TRUE)
+	{
+		root = (-equa.half_b - sqrt(equa.discriminant)) / equa.a;
+		if ((root < rec->tmin || root > rec->tmax) == FALSE
+			&& check_cylinder(world, ray, rec, root))
+			return (TRUE);
+	}
+	else if (check_cylinder(world, ray, rec, root) == TRUE)
 		return (TRUE);
 	return (FALSE);
 }

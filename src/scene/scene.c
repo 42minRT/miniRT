@@ -6,7 +6,7 @@
 /*   By: jimin <jimin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:23:38 by jimin             #+#    #+#             */
-/*   Updated: 2022/11/11 13:24:41 by jimin            ###   ########.fr       */
+/*   Updated: 2022/11/11 18:05:06 by jimin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_color3	set_ambient(char **ambient_values)
 
 void	set_cam_coordination(t_vec3 *u, t_vec3 *v, t_vec3 *w)
 {
-	*u = vunit(vcross(vup(*w), *w));
-	*v = vunit(vcross(*w, *u));
+	*v = vunit(vcross(*w, vup(*w)));
+	*u = vunit(vcross(*w, *v));
 }
 
 t_camera	set_camera(t_canvas *canvas, char **elements)
@@ -35,7 +35,7 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 
 	viewport_height = 2.0;
 	cam.origin = parse_xyz_coordination(elements[0]);
-	cam.w_dir = vmult(parse_vec3(elements[1]), -1);
+	cam.w_dir = parse_vec3(elements[1]);
 	set_cam_coordination(&cam.u_dir, &cam.v_dir, &cam.w_dir);
 	cam.viewport_h = viewport_height;
 	cam.viewport_w = viewport_height * canvas->aspect_ratio;
@@ -44,6 +44,7 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 	cam.vertical = vmult(cam.v_dir, cam.viewport_h);
 	cam.left_bottom = vminus(
 			vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
-				vdivide(cam.vertical, 2)), vmult(cam.w_dir, cam.focal_len));
+				vdivide(cam.vertical, 2)),
+			vmult(cam.w_dir, -1 * cam.focal_len));
 	return (cam);
 }

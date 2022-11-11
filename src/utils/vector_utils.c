@@ -6,7 +6,7 @@
 /*   By: jaekim <jaekim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:26:33 by jaekim            #+#    #+#             */
-/*   Updated: 2022/11/10 19:26:33 by jaekim           ###   ########.fr       */
+/*   Updated: 2022/11/11 20:00:00 by jimin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,28 @@ t_vec3	vmin(t_vec3 vec1, t_vec3 vec2)
 	return (vec1);
 }
 
+static t_bool	vsame(t_vec3 vec1, t_vec3 vec2)
+{
+	if (vec1.x == vec2.x && vec1.y == vec2.y && vec1.z == vec2.z)
+		return (TRUE);
+	return (FALSE);
+}
+
 t_vec3	vup(t_vec3 vec)
 {
-	if (vec.x == 0 && vec.y == 1 && vec.z == 0)
-		return (vec3(0, 0, 1));
-	if (vec.x == 0 && vec.y == -1 && vec.z == 0)
-		return (vec3(0, 0, -1));
-	return (vec3(0, 1, 0));
+	t_vec3	temp_vec;
+	double	direct;
+
+	if (vsame(vec, vec3(0, 1, 0)))
+		return (vec3(-1, 0, 0));
+	else if (vsame(vec, vec3(0, -1, 0)))
+		return (vec3(1, 0, 0));
+	else
+	{
+		temp_vec = vcross(vec, vec3(0, 1, 0));
+		direct = vdot(temp_vec, vec3(0, 0, 1));
+		if (direct < 0)
+			return (vec3(0, -1, 0));
+		return (vec3(0, 1, 0));
+	}
 }

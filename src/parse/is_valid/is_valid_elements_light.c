@@ -27,7 +27,7 @@ t_is_return	is_valid_a_element(char **elements)
 
 t_is_return	is_valid_l_element(char **elements)
 {
-	if (count_elements(elements) != 4)
+	if (!(count_elements(elements) == 3 || count_elements(elements) == 4))
 		return (NO);
 	if (is_xyz_coordinate(elements[1]) == NO)
 		return (NO);
