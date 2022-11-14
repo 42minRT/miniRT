@@ -30,17 +30,26 @@ t_bool	check_cylinder(
 	q_height = vdot(cp, cy->dir_v);
 	if (q_height < 0 || q_height > cy->height)
 		return (FALSE);
+	rec->tmax = root;
 	rec->normal = vunit(vminus(cp, cq));
 	set_face_normal(ray, rec);
 	rec->albedo = world->albedo;
 	return (TRUE);
 }
 
+static	t_is_return is_hit(t_hit_record *rec, double root)
+{
+	if (root < rec->tmin || root > rec->tmax)
+		return (NO);
+	return (YES);
+}
+
 t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 {
 	t_vec3		co;
 	t_quadratic	equa;
-	double		root;
+	double		p_root;
+	double 		m_root;
 	t_cylinder	*cy;
 
 	cy = world->element;
@@ -52,15 +61,10 @@ t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 	equa.discriminant = equa.half_b * equa.half_b - equa.a * equa.c;
 	if (equa.discriminant < 0)
 		return (FALSE);
-	root = (-equa.half_b + sqrt(equa.discriminant)) / equa.a;
-	if (root < rec->tmin || root > rec->tmax)
-	{
-		root = (-equa.half_b - sqrt(equa.discriminant)) / equa.a;
-		if ((root < rec->tmin || root > rec->tmax) == FALSE
-			&& check_cylinder(world, ray, rec, root))
-			return (TRUE);
-	}
-	else if (check_cylinder(world, ray, rec, root) == TRUE)
+	p_root = (-equa.half_b + sqrt(equa.discriminant)) / equa.a;
+	m_root = (-equa.half_b - sqrt(equa.discriminant)) / equa.a;
+	if ((is_hit(rec, p_root) == YES && check_cylinder(world, ray, rec, p_root)) ||
+	 (is_hit(rec, m_root) == YES && check_cylinder(world, ray, rec, m_root)))
 		return (TRUE);
 	return (FALSE);
 }
