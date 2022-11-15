@@ -6,7 +6,7 @@
 /*   By: jimin <jimin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:23:07 by jimin             #+#    #+#             */
-/*   Updated: 2022/11/11 20:05:30 by jimin            ###   ########.fr       */
+/*   Updated: 2022/11/15 10:36:56 by jaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_bool	check_cylinder(
 	return (TRUE);
 }
 
-static	t_is_return is_hit(t_hit_record *rec, double root)
+static t_is_return	is_hit(t_hit_record *rec, double root)
 {
 	if (root < rec->tmin || root > rec->tmax)
 		return (NO);
@@ -49,7 +49,7 @@ t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 	t_vec3		co;
 	t_quadratic	equa;
 	double		p_root;
-	double 		m_root;
+	double		m_root;
 	t_cylinder	*cy;
 
 	cy = world->element;
@@ -63,8 +63,9 @@ t_bool	hit_cylinder(t_object *world, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	p_root = (-equa.half_b + sqrt(equa.discriminant)) / equa.a;
 	m_root = (-equa.half_b - sqrt(equa.discriminant)) / equa.a;
-	if ((is_hit(rec, p_root) == YES && check_cylinder(world, ray, rec, p_root)) ||
-	 (is_hit(rec, m_root) == YES && check_cylinder(world, ray, rec, m_root)))
+	if ((is_hit(rec, p_root) == YES && check_cylinder(world, ray, rec, p_root))
+		|| (is_hit(rec, m_root) == YES
+			&& check_cylinder(world, ray, rec, m_root)))
 		return (TRUE);
 	return (FALSE);
 }
