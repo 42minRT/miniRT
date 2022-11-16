@@ -18,7 +18,8 @@ static void	plus_camera_direction(t_scene *scene, t_vec3 axis)
 	cam.vertical = vmult(cam.v_dir, cam.viewport_h);
 	cam.left_bottom = vminus(
 			vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
-				vdivide(cam.vertical, 2)), vmult(cam.w_dir, -1 * cam.focal_len));
+				vdivide(cam.vertical, 2)),
+			vmult(cam.w_dir, -1 * cam.focal_len));
 	scene->camera = cam;
 }
 
@@ -38,9 +39,9 @@ static void	plus_camera_coordination(t_scene *scene, t_keycode key)
 	else if (key == KEY_DOWN)
 		plus_vec = vmult(cam.v_dir, step * (-1));
 	else if (key == KEY_O)
-		plus_vec = vmult(cam.w_dir, step);
-	else
 		plus_vec = vmult(cam.w_dir, step * (-1));
+	else
+		plus_vec = vmult(cam.w_dir, step);
 	cam.origin = vplus(cam.origin, plus_vec);
 	cam.left_bottom = vplus(cam.left_bottom, plus_vec);
 	scene->camera = cam;

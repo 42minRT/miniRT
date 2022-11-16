@@ -12,8 +12,8 @@ t_color3	set_ambient(char **ambient_values)
 
 void	set_cam_coordination(t_vec3 *u, t_vec3 *v, t_vec3 *w)
 {
-	*u = vunit(vcross(*w, vup(*w)));
-	*v = vunit(vcross( *w, *u));
+	*v = vunit(vcross(*w, vup(*w)));
+	*u = vunit(vcross(*w, *v));
 }
 
 t_camera	set_camera(t_canvas *canvas, char **elements)
