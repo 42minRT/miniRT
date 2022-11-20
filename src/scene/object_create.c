@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   object_create.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongyle <seongyle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/20 16:53:01 by seongyle          #+#    #+#             */
+/*   Updated: 2022/11/20 16:55:18 by seongyle         ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/scene.h"
 
 t_object	*new_object(t_object_type type, void *element, t_color3 albedo)

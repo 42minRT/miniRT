@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seongyle <seongyle@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/20 16:53:15 by seongyle          #+#    #+#             */
+/*   Updated: 2022/11/20 16:55:46 by seongyle         ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/scene.h"
 #include "../../include/utils.h"
 
@@ -31,7 +43,7 @@ t_camera	set_camera(t_canvas *canvas, char **elements)
 	cam.horizontal = vmult(cam.u_dir, cam.viewport_w);
 	cam.vertical = vmult(cam.v_dir, cam.viewport_h);
 	cam.left_bottom = vminus(
-			vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)),
-				vdivide(cam.vertical, 2)), vmult(cam.w_dir, -1 * cam.focal_len));
+			vminus(vminus(cam.origin, vdivide(cam.horizontal, 2)), \
+			vdivide(cam.vertical, 2)), vmult(cam.w_dir, -1 * cam.focal_len));
 	return (cam);
 }
