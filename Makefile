@@ -81,8 +81,8 @@ OBJS = $(MAIN_OBJS) $(PARSE_OBJS) $(VALID_OBJS) $(SCENE_OBJS) $(UTILS_OBJS) $(RA
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	make bonus -C $(LIBFT)
-	make -C $(MLX)
+	make -j bonus -C $(LIBFT)
+	make -j -C $(MLX)
 	$(CC) $(CFLAGS) -I $(HEADER_DIR) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $@
 
 clean :
@@ -93,7 +93,9 @@ clean :
 fclean : clean
 	$(RM) $(NAME) $(LIBFT_LIB) $(MLX_LIB)
 
-re: fclean all
+re:
+	make fclean
+	make all
 
 %.o: %.c
 	$(CC) ${CFLAGS} -c $< -o $@

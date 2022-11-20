@@ -7,6 +7,7 @@
 		"fcntl.h": "c",
 		"scene.h": "c",
 		"structures.h": "c",
-		"utils.h": "c"
+		"utils.h": "c",
+		"object_utils.h": "c"
 	}
 }
